@@ -16,7 +16,10 @@ function App() {
     "mercados",
     "responsabilidad",
   ];
+
+  // Refs para cada sección
   const sectionRefs = sections.map(() => useRef(null));
+
   // Mostrar header solo si NO está la primera sección en view
   const heroInView = useInView(sectionRefs[0], { amount: 0.6 });
   useEffect(() => {
@@ -42,11 +45,19 @@ function App() {
   };
 
   return (
-    <>
-      {/* Header fijo con logo y hamburguesa, solo visible a partir de la segunda sección */}
+    <div className="relative min-h-screen bg-gradient-to-br from-blue-200/60 via-green-100/60 to-white/80 overflow-hidden">
+      {/* Fondo decorativo glass global */}
+      <div className="pointer-events-none fixed inset-0 z-0">
+        <div className="absolute inset-0 bg-white/30 backdrop-blur-2xl" />
+        {/* Ejemplo: blobs decorativos */}
+        <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-blue-300/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-green-200/40 rounded-full blur-2xl" />
+      </div>
+
+      {/* Header glassmorphism */}
       {showHeader ? (
         <header
-          className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 py-3 bg-white/70 backdrop-blur-md shadow-md border-b border-blue-100 transition-all duration-500 opacity-100 pointer-events-auto"
+          className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 py-3 bg-gradient-to-r from-blue-100/80 to-green-100/80 backdrop-blur-xl shadow-xl border-b border-blue-100/60 rounded-b-2xl transition-all duration-500 opacity-100 pointer-events-auto"
           style={{ transitionProperty: "opacity, box-shadow, background" }}
         >
           <div className="flex items-center gap-3 select-none">
@@ -56,7 +67,7 @@ function App() {
             </span>
           </div>
           <button
-            className="flex flex-col items-center justify-center w-12 h-12 bg-white/80 rounded-full shadow-lg border border-blue-200 hover:bg-white transition-all"
+            className="flex flex-col items-center justify-center w-12 h-12 bg-white/60 rounded-full shadow-lg border border-blue-200/60 hover:bg-white/80 transition-all"
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
             onClick={() => setMenuOpen((open) => !open)}
           >
@@ -68,42 +79,47 @@ function App() {
             <span
               className={`block w-7 h-1 rounded bg-blue-700 transition-all duration-300 mb-1 ${
                 menuOpen ? "opacity-0" : ""
-              }`}
+              }
+                }`}
             ></span>
             <span
               className={`block w-7 h-1 rounded bg-blue-700 transition-all duration-300 ${
                 menuOpen ? "-rotate-45 -translate-y-2" : ""
-              }`}
+              }
+                }`}
             ></span>
           </button>
         </header>
       ) : (
         <button
-          className="fixed top-6 right-6 z-50 flex flex-col items-center justify-center w-12 h-12 bg-white/80 rounded-full shadow-lg border border-blue-200 hover:bg-white transition-all"
+          className="fixed top-6 right-6 z-50 flex flex-col items-center justify-center w-12 h-12 bg-white/60 rounded-full shadow-lg border border-blue-200/60 hover:bg-white/80 transition-all"
           aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
           onClick={() => setMenuOpen((open) => !open)}
         >
           <span
             className={`block w-7 h-1 rounded bg-blue-700 transition-all duration-300 mb-1 ${
               menuOpen ? "rotate-45 translate-y-2" : ""
-            }`}
+            }
+              }`}
           ></span>
           <span
             className={`block w-7 h-1 rounded bg-blue-700 transition-all duration-300 mb-1 ${
               menuOpen ? "opacity-0" : ""
-            }`}
+            }
+              }`}
           ></span>
           <span
             className={`block w-7 h-1 rounded bg-blue-700 transition-all duration-300 ${
               menuOpen ? "-rotate-45 -translate-y-2" : ""
-            }`}
+            }
+              }`}
           ></span>
         </button>
       )}
 
-      {/* Overlay menú */}
+      {/* Overlay menú glass */}
       {menuOpen && (
-        <nav className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-white/90 backdrop-blur-sm animate-fadeIn">
+        <nav className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-white/80 backdrop-blur-2xl animate-fadeIn">
           <ul className="space-y-8 text-2xl font-bold text-blue-800">
             {sections.map((id) => (
               <li key={id}>
@@ -127,7 +143,8 @@ function App() {
           </ul>
         </nav>
       )}
-      <main className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth pt-[68px]">
+
+      <main className="relative h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth pt-[68px] z-10">
         {/* 1. Hero */}
         <section
           id="inicio"
@@ -176,8 +193,23 @@ function App() {
         <section
           id="presentacion"
           ref={sectionRefs[1]}
-          className="snap-center h-screen flex items-center justify-center bg-white text-blue-900 px-4 relative"
+          className="snap-center h-screen flex items-center justify-center bg-gradient-to-r from-blue-100/80 to-green-100/80 text-blue-900 px-4 relative overflow-hidden"
         >
+          {/* Divider decorativo superior */}
+          <svg
+            className="absolute -top-1 left-0 w-full h-24 z-0"
+            viewBox="0 0 1440 320"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill="#e0f2fe"
+              fillOpacity="0.7"
+              d="M0,64L48,80C96,96,192,128,288,133.3C384,139,480,117,576,117.3C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+            />
+          </svg>
+          {/* Blob decorativo derecho */}
+          <div className="absolute right-0 top-1/3 w-72 h-72 bg-blue-200/40 rounded-full blur-2xl z-0" />
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -194,7 +226,7 @@ function App() {
             />
             <motion.div
               variants={fadeUp}
-              className="bg-gradient-to-r from-blue-100 to-green-100 rounded-2xl shadow-xl p-10 flex-1 border border-blue-100 flex flex-col justify-center"
+              className="bg-white/60 backdrop-blur-xl rounded-2xl shadow-xl p-10 flex-1 border border-blue-100 flex flex-col justify-center"
             >
               <motion.h2
                 variants={fadeUp}
@@ -215,6 +247,19 @@ function App() {
               </motion.p>
             </motion.div>
           </motion.div>
+          {/* Divider decorativo inferior */}
+          <svg
+            className="absolute -bottom-1 left-0 w-full h-24 z-0"
+            viewBox="0 0 1440 320"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill="#e0f2fe"
+              fillOpacity="0.7"
+              d="M0,224L48,202.7C96,181,192,139,288,128C384,117,480,139,576,154.7C672,171,768,181,864,170.7C960,160,1056,128,1152,128C1248,128,1344,160,1392,176L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+            />
+          </svg>
         </section>
         {/* 3. Quiénes somos */}
         <section
@@ -523,7 +568,7 @@ function App() {
           </motion.div>
         </section>
       </main>
-    </>
+    </div>
   );
 }
 
