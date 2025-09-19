@@ -60,43 +60,7 @@ function App() {
       <div className="pointer-events-none fixed inset-0 z-0">
         {/* Glow radial */}
         <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[120vw] h-[60vh] bg-gradient-radial from-green-400/30 via-cyan-400/10 to-transparent blur-3xl opacity-80" />
-        {/* Líneas geométricas */}
-        <svg
-          className="absolute left-0 top-0 w-full h-full opacity-10"
-          viewBox="0 0 1440 900"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <linearGradient
-              id="linea"
-              x1="0"
-              y1="0"
-              x2="1440"
-              y2="900"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#67e8f9" />
-              <stop offset="1" stopColor="#4ade80" />
-            </linearGradient>
-          </defs>
-          <line
-            x1="0"
-            y1="0"
-            x2="1440"
-            y2="900"
-            stroke="url(#linea)"
-            strokeWidth="2"
-          />
-          <line
-            x1="1440"
-            y1="0"
-            x2="0"
-            y2="900"
-            stroke="url(#linea)"
-            strokeWidth="2"
-          />
-        </svg>
+        {/* Líneas geométricas eliminadas para fondo limpio */}
         {/* Blobs y neones */}
         <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-cyan-400/30 rounded-full blur-3xl shadow-[0_0_80px_40px_#22d3ee55] animate-pulse" />
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-green-400/30 rounded-full blur-2xl shadow-[0_0_80px_40px_#4ade8055] animate-pulse" />

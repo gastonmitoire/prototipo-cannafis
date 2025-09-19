@@ -23,43 +23,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Animated gradient blobs */}
       <div className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-cyan-300/40 rounded-full blur-3xl animate-pulse z-0" />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-green-200/40 rounded-full blur-2xl animate-pulse z-0" />
-      {/* Futuristic lines overlay */}
-      <svg
-        className="absolute left-0 top-0 w-full h-full opacity-10 z-0"
-        viewBox="0 0 1440 900"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <linearGradient
-            id="linea"
-            x1="0"
-            y1="0"
-            x2="1440"
-            y2="900"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="#67e8f9" />
-            <stop offset="1" stopColor="#4ade80" />
-          </linearGradient>
-        </defs>
-        <line
-          x1="0"
-          y1="0"
-          x2="1440"
-          y2="900"
-          stroke="url(#linea)"
-          strokeWidth="2"
-        />
-        <line
-          x1="1440"
-          y1="0"
-          x2="0"
-          y2="900"
-          stroke="url(#linea)"
-          strokeWidth="2"
-        />
-      </svg>
+      {/* Futuristic lines overlay eliminado para fondo limpio */}
       {/* Glassmorphism card with animated logo and text */}
       <motion.div
         variants={containerVariants}
