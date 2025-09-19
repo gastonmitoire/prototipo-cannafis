@@ -45,74 +45,116 @@ function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-blue-200/60 via-green-100/60 to-white/80 overflow-hidden">
-      {/* Fondo decorativo glass global */}
+    <div className="relative min-h-screen bg-gradient-to-br from-[#0f172a] via-[#0e2e2f] to-[#1e293b] overflow-hidden font-sans futurist">
+      {/* Fondo decorativo glass global y overlays futuristas */}
       <div className="pointer-events-none fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-white/30 backdrop-blur-2xl" />
-        {/* Ejemplo: blobs decorativos */}
-        <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-blue-300/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-green-200/40 rounded-full blur-2xl" />
+        {/* Glow radial */}
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[120vw] h-[60vh] bg-gradient-radial from-green-400/30 via-cyan-400/10 to-transparent blur-3xl opacity-80" />
+        {/* Líneas geométricas */}
+        <svg
+          className="absolute left-0 top-0 w-full h-full opacity-10"
+          viewBox="0 0 1440 900"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient
+              id="linea"
+              x1="0"
+              y1="0"
+              x2="1440"
+              y2="900"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stopColor="#67e8f9" />
+              <stop offset="1" stopColor="#4ade80" />
+            </linearGradient>
+          </defs>
+          <line
+            x1="0"
+            y1="0"
+            x2="1440"
+            y2="900"
+            stroke="url(#linea)"
+            strokeWidth="2"
+          />
+          <line
+            x1="1440"
+            y1="0"
+            x2="0"
+            y2="900"
+            stroke="url(#linea)"
+            strokeWidth="2"
+          />
+        </svg>
+        {/* Blobs y neones */}
+        <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-cyan-400/30 rounded-full blur-3xl shadow-[0_0_80px_40px_#22d3ee55] animate-pulse" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-green-400/30 rounded-full blur-2xl shadow-[0_0_80px_40px_#4ade8055] animate-pulse" />
+        {/* Overlay de luz */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-cyan-200/10" />
       </div>
 
-      {/* Header glassmorphism */}
+      {/* Header glassmorphism futurista */}
       {showHeader ? (
         <header
-          className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 py-3 bg-gradient-to-r from-blue-100/80 to-green-100/80 backdrop-blur-xl shadow-xl border-b border-blue-100/60 rounded-b-2xl transition-all duration-500 opacity-100 pointer-events-auto"
+          className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-4 bg-gradient-to-r from-cyan-900/80 via-cyan-700/80 to-green-700/80 backdrop-blur-2xl shadow-2xl border-b border-cyan-400/30 rounded-b-3xl transition-all duration-500 opacity-100 pointer-events-auto"
           style={{ transitionProperty: "opacity, box-shadow, background" }}
         >
-          <div className="flex items-center gap-3 select-none">
-            <img src="/vite.svg" alt="Logo" className="w-10 h-10 drop-shadow" />
-            <span className="text-xl font-bold text-blue-700 tracking-tight">
+          <div className="flex items-center gap-4 select-none">
+            <img
+              src="/vite.svg"
+              alt="Logo"
+              className="w-12 h-12 drop-shadow-neon-cyan"
+            />
+            <span className="text-2xl font-extrabold tracking-widest text-cyan-300 drop-shadow-neon-cyan futurist">
               CannaFIS
             </span>
           </div>
           <button
-            className="flex flex-col items-center justify-center w-12 h-12 bg-white/60 rounded-full shadow-lg border border-blue-200/60 hover:bg-white/80 transition-all"
+            className="flex flex-col items-center justify-center w-14 h-14 bg-cyan-200/30 rounded-full shadow-lg border border-cyan-400/40 hover:bg-cyan-100/40 transition-all backdrop-blur-xl"
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
             onClick={() => setMenuOpen((open) => !open)}
           >
             <span
-              className={`block w-7 h-1 rounded bg-blue-700 transition-all duration-300 mb-1 ${
+              className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 mb-1 ${
                 menuOpen ? "rotate-45 translate-y-2" : ""
               }`}
             ></span>
             <span
-              className={`block w-7 h-1 rounded bg-blue-700 transition-all duration-300 mb-1 ${
+              className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 mb-1 ${
                 menuOpen ? "opacity-0" : ""
-              }
-                }`}
+              }`}
             ></span>
             <span
-              className={`block w-7 h-1 rounded bg-blue-700 transition-all duration-300 ${
+              className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 ${
                 menuOpen ? "-rotate-45 -translate-y-2" : ""
-              }
-                }`}
+              }`}
             ></span>
           </button>
         </header>
       ) : (
         <button
-          className="fixed top-6 right-6 z-50 flex flex-col items-center justify-center w-12 h-12 bg-white/60 rounded-full shadow-lg border border-blue-200/60 hover:bg-white/80 transition-all"
+          className="fixed top-6 right-6 z-50 flex flex-col items-center justify-center w-14 h-14 bg-cyan-200/30 rounded-full shadow-lg border border-cyan-400/40 hover:bg-cyan-100/40 transition-all backdrop-blur-xl"
           aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
           onClick={() => setMenuOpen((open) => !open)}
         >
           <span
-            className={`block w-7 h-1 rounded bg-blue-700 transition-all duration-300 mb-1 ${
+            className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 mb-1 ${
               menuOpen ? "rotate-45 translate-y-2" : ""
             }
-              }`}
+            }`}
           ></span>
           <span
-            className={`block w-7 h-1 rounded bg-blue-700 transition-all duration-300 mb-1 ${
+            className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 mb-1 ${
               menuOpen ? "opacity-0" : ""
             }
-              }`}
+            }`}
           ></span>
           <span
-            className={`block w-7 h-1 rounded bg-blue-700 transition-all duration-300 ${
+            className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 ${
               menuOpen ? "-rotate-45 -translate-y-2" : ""
             }
-              }`}
+            }`}
           ></span>
         </button>
       )}
