@@ -4,14 +4,12 @@ import { motion } from "framer-motion";
 interface HeroSectionProps {
   sectionRef: React.RefObject<HTMLElement | null>;
   containerVariants: any;
-  fadeUp: any;
   useInView: any;
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({
   sectionRef,
   containerVariants,
-  fadeUp,
   useInView,
 }) => {
   return (
@@ -29,38 +27,57 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         variants={containerVariants}
         initial="hidden"
         animate={useInView(sectionRef, { amount: 0.4 }) ? "show" : "hidden"}
-        className="flex flex-col items-center z-10"
+        className="flex flex-col items-center justify-center w-full z-10"
       >
-        <motion.div variants={fadeUp} className="mb-8 flex items-center gap-4">
-          <motion.img
-            src="/vite.svg"
-            alt="Logo"
-            className="w-24 h-24 drop-shadow-neon-cyan"
-            initial={{ scale: 0.7, rotate: -10, opacity: 0 }}
-            animate={{ scale: 1, rotate: 0, opacity: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 120,
-              damping: 10,
-              delay: 0.2,
-            }}
-          />
-          <motion.span
-            className="text-7xl md:text-8xl font-extrabold tracking-tight futurist drop-shadow-neon-cyan"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 80, delay: 0.4 }}
-            style={{
-              textShadow:
-                "0 0 32px #67e8f9, 0 2px 8px #38bdf8, 0 0 8px #4ade80, 0 0 2px #fff",
-            }}
-          >
-            CannaFIS
-          </motion.span>
-        </motion.div>
+        <motion.img
+          src="/vite.svg"
+          alt="Logo"
+          className="w-28 h-28 mb-6 drop-shadow-neon-cyan"
+          initial={{ scale: 0.7, rotate: -10, opacity: 0 }}
+          whileInView={{ scale: 1, rotate: 0, opacity: 1 }}
+          viewport={{ amount: 0.5 }}
+          transition={{
+            type: "spring",
+            stiffness: 120,
+            damping: 10,
+            delay: 0.2,
+          }}
+        />
+        <motion.h1
+          className="text-7xl md:text-8xl font-extrabold tracking-tight futurist drop-shadow-neon-cyan text-center"
+          initial="hidden"
+          whileInView="visible"
+          exit="hidden"
+          viewport={{ amount: 0.5 }}
+          variants={{
+            hidden: { opacity: 0, x: 80 },
+            visible: {
+              opacity: 1,
+              x: 0,
+              transition: { duration: 0.7, delay: 0.3, type: "spring", stiffness: 60 },
+            },
+          }}
+          style={{
+            textShadow:
+              "0 0 32px #67e8f9, 0 2px 8px #38bdf8, 0 0 8px #4ade80, 0 0 2px #fff",
+          }}
+        >
+          CannaFIS
+        </motion.h1>
         <motion.h2
-          variants={fadeUp}
           className="text-2xl md:text-3xl font-bold mb-6 text-cyan-900 text-center drop-shadow-neon-cyan"
+          initial="hidden"
+          whileInView="visible"
+          exit="hidden"
+          viewport={{ amount: 0.5 }}
+          variants={{
+            hidden: { opacity: 0, x: -80 },
+            visible: {
+              opacity: 1,
+              x: 0,
+              transition: { duration: 0.7, delay: 0.5, type: "spring", stiffness: 60 },
+            },
+          }}
           style={{
             textShadow: "0 0 16px #a5f3fc, 0 2px 8px #38bdf8, 0 0 2px #fff",
           }}
@@ -68,8 +85,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           Pioneros en cannabis medicinal farmacéutico en Argentina
         </motion.h2>
         <motion.div
-          variants={fadeUp}
           className="bg-white/60 rounded-2xl px-8 py-4 shadow-2xl backdrop-blur-xl border border-cyan-200/40 mt-2"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ amount: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
         >
           <span className="text-lg font-medium text-cyan-900">
             Innovación, calidad y trazabilidad en cada paso.
