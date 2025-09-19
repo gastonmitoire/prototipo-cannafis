@@ -14,7 +14,7 @@ const FuturistHeader: React.FC<FuturistHeaderProps> = ({
   if (!showHeader) return null;
   return (
     <header
-      className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-4 bg-gradient-to-r from-cyan-900/80 via-cyan-700/80 to-green-700/80 backdrop-blur-2xl shadow-2xl border-b border-cyan-400/30 rounded-b-3xl transition-all duration-500 opacity-100 pointer-events-auto"
+      className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-4 bg-slate-900/80 backdrop-blur-2xl transition-all duration-500 opacity-100 pointer-events-auto"
       style={{ transitionProperty: "opacity, box-shadow, background" }}
     >
       <div className="flex items-center gap-4 select-none">
