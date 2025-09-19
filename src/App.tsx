@@ -41,17 +41,28 @@ function App() {
     hidden: {},
     show: {
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.09,
+        delayChildren: 0.05,
+        ease: [0.22, 1, 0.36, 1],
       },
     },
   };
   const fadeUp = {
-    hidden: { opacity: 0, y: 40 },
-    show: {
+    hidden: { opacity: 0, x: -48, scale: 0.98 },
+    show: (i = 0) => ({
       opacity: 1,
-      y: 0,
-      transition: { type: "spring" as const, stiffness: 80 },
-    },
+      x: 0,
+      scale: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 320,
+        damping: 12,
+        mass: 0.6,
+        duration: 0.62,
+        delay: i * 0.09,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    }),
   };
 
   return (
@@ -110,7 +121,6 @@ function App() {
         <HeroSection
           sectionRef={sectionRefs[0]}
           containerVariants={containerVariants}
-          fadeUp={fadeUp}
           useInView={useInView}
         />
         <PresentacionSection

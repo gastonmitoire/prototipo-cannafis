@@ -16,40 +16,96 @@ const QuienesSomosSection: React.FC<QuienesSomosSectionProps> = ({
   <section
     id="quienes-somos"
     ref={sectionRef}
-    className="snap-center h-screen flex items-center justify-center bg-gradient-to-br from-green-50 via-white to-blue-100 text-blue-900 px-4"
+    className="snap-center h-screen grid grid-cols-5 bg-gradient-to-br from-green-50 via-white to-blue-100 text-blue-900 px-4"
+    style={{
+      backgroundImage:
+        'url("https://www.transparenttextures.com/patterns/shattered.png")',
+      backgroundPosition: "center",
+      backgroundAttachment: "fixed",
+    }}
   >
     <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      animate={useInView(sectionRef, { amount: 0.4 }) ? "show" : "hidden"}
-      className="flex flex-col items-center w-full z-10"
+      initial={{ opacity: 0, filter: "blur(8px)" }}
+      animate={
+        useInView(sectionRef, { amount: 0.4 })
+          ? { opacity: 1, filter: "blur(0px)" }
+          : { opacity: 0, filter: "blur(8px)" }
+      }
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      className="col-start-2 col-end-4 flex flex-col justify-end self-end px-20 pb-7 bg-black/30 backdrop-blur-md h-[80%] w-full"
     >
-      <motion.div
-        variants={fadeUp}
-        className="bg-white/80 rounded-2xl shadow-xl p-10 flex-1 border border-green-200 flex flex-col justify-center"
+      <motion.h2
+        initial={{ opacity: 0, y: -32 }}
+        animate={
+          useInView(sectionRef, { amount: 0.4 })
+            ? { opacity: 1, y: 0 }
+            : { opacity: 0, y: -32 }
+        }
+        transition={{
+          duration: 0.6,
+          delay: 0.18,
+          type: "spring",
+          stiffness: 60,
+        }}
+        className="text-4xl font-bold mb-8 text-white/30 uppercase "
       >
-        <motion.h2
-          variants={fadeUp}
-          className="text-3xl font-bold mb-4 text-green-700 text-left"
-        >
-          Quiénes somos
-        </motion.h2>
+        Quiénes somos
+      </motion.h2>
+      <div className="space-y-4 [&>p]:text-xl [&>p]:text-blue-100/90 [&>p]:text-left [&>p]:font-thin">
         <motion.p
-          variants={fadeUp}
-          className="text-lg text-blue-900/80 text-left"
+          initial={{ opacity: 0, x: -40 }}
+          animate={
+            useInView(sectionRef, { amount: 0.4 })
+              ? { opacity: 1, x: 0 }
+              : { opacity: 0, x: -40 }
+          }
+          transition={{
+            duration: 0.6,
+            delay: 0.36,
+            type: "spring",
+            stiffness: 60,
+          }}
         >
           CannaFIS es una empresa de capital nacional que combina innovación
           biotecnológica, excelencia en proceso industrial y cumplimiento
           normativo riguroso.
-          <br />
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0, x: -40 }}
+          animate={
+            useInView(sectionRef, { amount: 0.4 })
+              ? { opacity: 1, x: 0 }
+              : { opacity: 0, x: -40 }
+          }
+          transition={{
+            duration: 0.6,
+            delay: 0.48,
+            type: "spring",
+            stiffness: 60,
+          }}
+        >
           Nacimos para abastecer a laboratorios, farmacias magistrales e
           instituciones de salud con cannabis medicinal de calidad farmacéutica.
-          <br />
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0, x: -40 }}
+          animate={
+            useInView(sectionRef, { amount: 0.4 })
+              ? { opacity: 1, x: 0 }
+              : { opacity: 0, x: -40 }
+          }
+          transition={{
+            duration: 0.6,
+            delay: 0.6,
+            type: "spring",
+            stiffness: 60,
+          }}
+        >
           Nuestro compromiso: ofrecer productos estandarizados, seguros y
           legales, que aporten valor real a tratamientos terapéuticos en
           mercados regulados.
         </motion.p>
-      </motion.div>
+      </div>
     </motion.div>
   </section>
 );
