@@ -30,7 +30,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         className="flex flex-col items-center justify-center w-full z-10"
       >
         <motion.h1
-          className="text-7xl md:text-8xl font-extrabold tracking-tight futurist drop-shadow-neon-cyan text-center"
+          className="text-7xl md:text-8xl font-extrabold tracking-tight futurist drop-shadow-neon-cyan text-center antialiased subpixel-antialiased"
           initial="hidden"
           whileInView="visible"
           exit="hidden"
