@@ -16,7 +16,7 @@ const PresentacionSection: React.FC<PresentacionSectionProps> = ({
   <section
     id="presentacion"
     ref={sectionRef}
-    className="snap-center h-screen flex items-center justify-center bg-slate-900/80 text-blue-900 px-4 relative overflow-hidden"
+    className="snap-center h-screen flex items-center justify-center bg-slate-900/80 px-4 relative overflow-hidden"
   >
     {/* Divider decorativo superior */}
     {/* <svg

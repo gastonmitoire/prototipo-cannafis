@@ -21,6 +21,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Animated gradient blobs */}
       <div className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-cyan-300/40 rounded-full blur-3xl animate-pulse z-0" />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-green-200/40 rounded-full blur-2xl animate-pulse z-0" />
+      <div
+        style={{
+          backgroundImage:
+            'url("https://brocku.ca/brock-news/wp-content/uploads/2025/05/GettyImages-1357846265-1600x1067.jpg?x56978")',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+        className="absolute inset-0 opacity-10 z-0"
+      />
+
       {/* Futuristic lines overlay eliminado para fondo limpio */}
       {/* Glassmorphism card with animated logo and text */}
       <motion.div

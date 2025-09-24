@@ -13,10 +13,10 @@ const ShadcnHeader: React.FC<ShadcnHeaderProps> = ({
 }) => {
   if (!showHeader) return null;
   return (
-    <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-4 bg-background/80 backdrop-blur-2xl border-b border-border transition-all duration-500 opacity-100 pointer-events-auto">
+    <header className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-4 bg-slate-900/80 backdrop-blur-2xl transition-all duration-500 opacity-100 pointer-events-auto">
       <div className="flex items-center gap-4 select-none">
         <img src="/vite.svg" alt="Logo" className="w-12 h-12" />
-        <span className="text-2xl font-extrabold tracking-widest text-primary">
+        <span className="text-2xl font-extrabold tracking-widest text-white/80">
           CannaFIS
         </span>
       </div>
