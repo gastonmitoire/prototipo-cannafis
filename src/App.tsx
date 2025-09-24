@@ -63,11 +63,16 @@ function App() {
   // Refs para cada sección
   const sectionRefs = sections.map(() => useRef<HTMLElement>(null));
 
-  // Mostrar header solo si NO está la primera sección en view
-  const heroInView = useInView(sectionRefs[0], { amount: 0.6 });
+  // Mostrar header solo si el usuario hizo scroll
   useEffect(() => {
-    setShowHeader(!heroInView);
-  }, [heroInView]);
+    const handleScroll = () => {
+      setShowHeader(window.scrollY > 0);
+    };
+    // Ejecutar al montar para ocultar el header si scrollY === 0
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-[#0f172a] via-[#0e2e2f] to-[#1e293b] overflow-hidden font-sans futurist">
@@ -82,40 +87,40 @@ function App() {
         <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-cyan-200/10" />
       </div>
       {/* Header y menú */}
-      <FuturistHeader
-        showHeader={showHeader}
-        menuOpen={menuOpen}
-        setMenuOpen={setMenuOpen}
-      />
-      {!showHeader && (
-        <button
-          className="fixed top-6 right-6 z-50 flex flex-col items-center justify-center w-14 h-14 bg-cyan-200/30 rounded-full shadow-lg border border-cyan-400/40 hover:bg-cyan-100/40 transition-all backdrop-blur-xl"
-          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          <span
-            className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 mb-1 ${
-              menuOpen ? "rotate-45 translate-y-2" : ""
-            }`}
-          />
-          <span
-            className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 mb-1 ${
-              menuOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 ${
-              menuOpen ? "-rotate-45 -translate-y-2" : ""
-            }`}
-          />
-        </button>
+      {showHeader && (
+        <FuturistHeader
+          showHeader={showHeader}
+          menuOpen={menuOpen}
+          setMenuOpen={setMenuOpen}
+        />
       )}
+      <button
+        className="fixed top-6 right-6 z-50 flex flex-col items-center justify-center w-14 h-14 bg-cyan-200/30 rounded-full shadow-lg border border-cyan-400/40 hover:bg-cyan-100/40 transition-all backdrop-blur-xl"
+        aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+        onClick={() => setMenuOpen((open) => !open)}
+      >
+        <span
+          className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 mb-1 ${
+            menuOpen ? "rotate-45 translate-y-2" : ""
+          }`}
+        />
+        <span
+          className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 mb-1 ${
+            menuOpen ? "opacity-0" : ""
+          }`}
+        />
+        <span
+          className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 ${
+            menuOpen ? "-rotate-45 -translate-y-2" : ""
+          }`}
+        />
+      </button>
       <FuturistMenu
         menuOpen={menuOpen}
         setMenuOpen={setMenuOpen}
         sections={sections}
       />
-      <main className="relative h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth pt-[68px] z-10">
+      <main className="relative min-h-screen overflow-y-auto scroll-smooth pt-[68px] z-10">
         <HeroSection
           sectionRef={sectionRefs[0]}
           containerVariants={containerVariants}
@@ -135,7 +140,7 @@ function App() {
         />
         <section
           ref={imagenSectionRef}
-          className="snap-center relative w-full min-h-screen flex items-center justify-center overflow-hidden"
+          className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
         >
           {/* Imagen con animación de zoom controlada por eventos viewport */}
           <div className="absolute inset-0 w-full h-full z-0">
