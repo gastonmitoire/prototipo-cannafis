@@ -28,7 +28,7 @@ const fadeUp = {
 };
 import { useRef, useState, useEffect } from "react";
 import { useInView, motion } from "framer-motion";
-import FuturistHeader from "./components/FuturistHeader";
+import ShadcnHeader from "./components/ShadcnHeader";
 import FuturistMenu from "./components/FuturistMenu";
 import HeroSection from "./components/HeroSection";
 import PresentacionSection from "./components/PresentacionSection";
@@ -44,7 +44,6 @@ function App() {
   const [zoomedIn, setZoomedIn] = useState(false);
   // Ref y estado para la sección con imagen
   const imagenSectionRef = useRef<HTMLElement>(null);
-  const imagenInView = useInView(imagenSectionRef, { amount: 0.7 });
   // Estado para el menú hamburguesa y visibilidad del header
   const [menuOpen, setMenuOpen] = useState(false);
   const [showHeader, setShowHeader] = useState(false);
@@ -87,40 +86,41 @@ function App() {
         <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-cyan-200/10" />
       </div>
       {/* Header y menú */}
-      {showHeader && (
-        <FuturistHeader
+      {showHeader ? (
+        <ShadcnHeader
           showHeader={showHeader}
           menuOpen={menuOpen}
           setMenuOpen={setMenuOpen}
         />
+      ) : (
+        <button
+          className="fixed top-6 right-6 z-50 flex flex-col items-center justify-center w-14 h-14 bg-cyan-200/30 rounded-full shadow-lg border border-cyan-400/40 hover:bg-cyan-100/40 transition-all backdrop-blur-xl"
+          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span
+            className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 mb-1 ${
+              menuOpen ? "rotate-45 translate-y-2" : ""
+            }`}
+          />
+          <span
+            className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 mb-1 ${
+              menuOpen ? "opacity-0" : ""
+            }`}
+          />
+          <span
+            className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 ${
+              menuOpen ? "-rotate-45 -translate-y-2" : ""
+            }`}
+          />
+        </button>
       )}
-      <button
-        className="fixed top-6 right-6 z-50 flex flex-col items-center justify-center w-14 h-14 bg-cyan-200/30 rounded-full shadow-lg border border-cyan-400/40 hover:bg-cyan-100/40 transition-all backdrop-blur-xl"
-        aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-        onClick={() => setMenuOpen((open) => !open)}
-      >
-        <span
-          className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 mb-1 ${
-            menuOpen ? "rotate-45 translate-y-2" : ""
-          }`}
-        />
-        <span
-          className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 mb-1 ${
-            menuOpen ? "opacity-0" : ""
-          }`}
-        />
-        <span
-          className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 ${
-            menuOpen ? "-rotate-45 -translate-y-2" : ""
-          }`}
-        />
-      </button>
       <FuturistMenu
         menuOpen={menuOpen}
         setMenuOpen={setMenuOpen}
         sections={sections}
       />
-      <main className="relative min-h-screen overflow-y-auto scroll-smooth pt-[68px] z-10">
+      <main className="relative min-h-screen overflow-y-auto scroll-smooth z-10">
         <HeroSection
           sectionRef={sectionRefs[0]}
           containerVariants={containerVariants}

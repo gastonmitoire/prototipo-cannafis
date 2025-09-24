@@ -29,20 +29,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         animate={useInView(sectionRef, { amount: 0.4 }) ? "show" : "hidden"}
         className="flex flex-col items-center justify-center w-full z-10"
       >
-        <motion.img
-          src="/vite.svg"
-          alt="Logo"
-          className="w-28 h-28 mb-6 drop-shadow-neon-cyan"
-          initial={{ scale: 0.7, rotate: -10, opacity: 0 }}
-          whileInView={{ scale: 1, rotate: 0, opacity: 1 }}
-          viewport={{ amount: 0.5 }}
-          transition={{
-            type: "spring",
-            stiffness: 120,
-            damping: 10,
-            delay: 0.2,
-          }}
-        />
         <motion.h1
           className="text-7xl md:text-8xl font-extrabold tracking-tight futurist drop-shadow-neon-cyan text-center"
           initial="hidden"
@@ -54,7 +40,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             visible: {
               opacity: 1,
               x: 0,
-              transition: { duration: 0.7, delay: 0.3, type: "spring", stiffness: 60 },
+              transition: {
+                duration: 0.7,
+                delay: 0.3,
+                type: "spring",
+                stiffness: 60,
+              },
             },
           }}
           style={{
@@ -75,7 +66,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             visible: {
               opacity: 1,
               x: 0,
-              transition: { duration: 0.7, delay: 0.5, type: "spring", stiffness: 60 },
+              transition: {
+                duration: 0.7,
+                delay: 0.5,
+                type: "spring",
+                stiffness: 60,
+              },
             },
           }}
           style={{
