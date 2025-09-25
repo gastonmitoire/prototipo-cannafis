@@ -21,31 +21,44 @@ const ImageWithZoomSection: React.FC<ImageWithZoomSectionProps> = ({
     // triggerOnce: false
   });
   // Usar IntersectionObserverEntry para obtener el ratio
+  // Inicializar en 0 para que el zoom ya esté aumentado antes de entrar
   const [intersectionRatio, setIntersectionRatio] = React.useState(0);
-  // Guardar el último intersectionRatio máximo alcanzado (para clamp)
-  const lastRatio = React.useRef(0);
-  const lastScrollY = React.useRef(window.scrollY);
+  const [lockedAtOne, setLockedAtOne] = React.useState(false);
   React.useEffect(() => {
     if (!sectionRef.current) return;
     const observer = new window.IntersectionObserver(
       ([entry]) => {
-        const currentScrollY = window.scrollY;
-        const scrollingUp = currentScrollY < lastScrollY.current;
-        lastScrollY.current = currentScrollY;
-        if (scrollingUp) {
-          // Si sube, actualizar el ratio normalmente (zoom vuelve a crecer)
-          setIntersectionRatio(entry.intersectionRatio);
-          lastRatio.current = entry.intersectionRatio;
-        } else {
-          // Si baja, clamp a 1 como mínimo
-          setIntersectionRatio(Math.max(entry.intersectionRatio, 1));
+        // Si la sección está completamente fuera del viewport por arriba, resetear zoom (como si fuera la primera vez)
+        if (entry.boundingClientRect.bottom < 0) {
+          setLockedAtOne(false);
+          setIntersectionRatio(0);
+          return;
         }
+        // Si la sección está completamente fuera del viewport por abajo, mantener zoom aumentado (no cambiar a 1)
+        if (entry.boundingClientRect.top > window.innerHeight) {
+          setLockedAtOne(false);
+          setIntersectionRatio(0);
+          return;
+        }
+        // Si la sección está completamente visible, lock en 1
+        if (entry.intersectionRatio === 1) {
+          setLockedAtOne(true);
+          setIntersectionRatio(1);
+          return;
+        }
+        // Si ya pasaste la sección (lockedAtOne), mantener zoom en 1
+        if (lockedAtOne) {
+          setIntersectionRatio(1);
+          return;
+        }
+        // Si la sección está entrando desde arriba, animar progresivo
+        setIntersectionRatio(entry.intersectionRatio);
       },
       { threshold: Array.from({ length: 101 }, (_, i) => i / 100) }
     );
     observer.observe(sectionRef.current);
     return () => observer.disconnect();
-  }, []);
+  }, [lockedAtOne]);
 
   return (
     <section
