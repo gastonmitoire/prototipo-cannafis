@@ -16,11 +16,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     <section
       id="inicio"
       ref={sectionRef}
-      className="snap-center h-screen flex items-center justify-center bg-gradient-to-br from-cyan-100 via-blue-50 to-green-100 relative overflow-hidden"
+      className="snap-center h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-cyan-100 to-green-50 relative overflow-hidden"
     >
-      {/* Animated gradient blobs */}
-      <div className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-cyan-300/40 rounded-full blur-3xl animate-pulse z-0" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-green-200/40 rounded-full blur-2xl animate-pulse z-0" />
+      {/* Soft pastel gradient blobs */}
+      <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-cyan-100/30 rounded-full blur-3xl animate-pulse z-0" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-green-100/30 rounded-full blur-2xl animate-pulse z-0" />
       <div
         style={{
           backgroundImage:
@@ -32,7 +32,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         className="absolute inset-0 opacity-10 z-0"
       />
 
-      {/* Futuristic lines overlay eliminado para fondo limpio */}
       {/* Glassmorphism card with animated logo and text */}
       <motion.div
         variants={containerVariants}
