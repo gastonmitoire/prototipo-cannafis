@@ -80,15 +80,20 @@ function CertCard({
   title,
   subtitle,
   bg,
+  side = "left",
 }: {
   logo: React.ReactNode;
   title: string;
   subtitle: string;
   bg: string;
+  side?: "left" | "right";
 }) {
   const [hovered, setHovered] = React.useState(false);
   return (
     <motion.div
+      className={`flex flex-col md:flex-row items-center md:items-start gap-6 p-6 rounded-2xl shadow-lg border border-green-100 bg-gradient-to-br ${bg} ${
+        side === "right" ? "md:flex-row-reverse" : ""
+      }`}
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{
@@ -103,7 +108,13 @@ function CertCard({
       <div className="flex-shrink-0 flex items-center justify-center">
         {logo}
       </div>
-      <div className="flex flex-col items-center md:items-start text-center md:text-left w-full">
+      <div
+        className={`flex flex-col ${
+          side === "right"
+            ? "items-center md:items-end text-center md:text-right"
+            : "items-center md:items-start text-center md:text-left"
+        } w-full`}
+      >
         <motion.div
           animate={hovered ? { scale: 1.045, y: -2 } : { scale: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 180, damping: 18 }}
@@ -138,7 +149,7 @@ const CertificacionesSection: React.FC<CertificacionesSectionProps> = ({
   <section
     id="certificaciones"
     ref={sectionRef}
-    className="snap-center min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-green-50 to-blue-100 text-blue-900 px-4"
+    className="snap-center min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-green-50 to-blue-100 text-blue-900 w-full px-8"
   >
     <motion.div
       variants={containerVariants}
@@ -146,10 +157,7 @@ const CertificacionesSection: React.FC<CertificacionesSectionProps> = ({
       animate={useInView(sectionRef, { amount: 0.4 }) ? "show" : "hidden"}
       className="flex flex-col items-center w-full z-10"
     >
-      <motion.div
-        variants={fadeUp}
-        className="bg-white/90 rounded-2xl shadow-xl p-10"
-      >
+      <motion.div variants={fadeUp} className="w-full">
         <motion.h2
           variants={fadeUp}
           className="text-3xl font-bold mb-4 text-green-700 text-center"
@@ -158,8 +166,12 @@ const CertificacionesSection: React.FC<CertificacionesSectionProps> = ({
         </motion.h2>
         {/* Cards de certificación grandes y reutilizables */}
         <div className="flex flex-col gap-8 my-8 w-full">
-          {certificaciones.map((cert, idx) => (
-            <CertCard key={cert.title} {...cert} />
+          {certificaciones.map((cert, index) => (
+            <CertCard
+              key={cert.title}
+              {...cert}
+              side={index % 2 === 0 ? "left" : "right"}
+            />
           ))}
         </div>
         <motion.p variants={fadeUp} className="text-center text-blue-900/80">
