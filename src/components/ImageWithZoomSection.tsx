@@ -6,6 +6,7 @@ interface ImageWithZoomSectionProps {
   alt?: string;
   overlayClassName?: string;
   children?: React.ReactNode;
+  height?: string | number;
 }
 
 const ImageWithZoomSection: React.FC<ImageWithZoomSectionProps> = ({
@@ -13,6 +14,7 @@ const ImageWithZoomSection: React.FC<ImageWithZoomSectionProps> = ({
   alt = "Decorative image",
   overlayClassName = "bg-gradient-to-br from-[#0f172a] via-[#0e2e2f] to-[#1e293b] opacity-70",
   children,
+  height,
 }) => {
   const sectionRef = useRef<HTMLElement>(null);
   // Usar useInView para obtener el ratio de visibilidad
@@ -63,16 +65,26 @@ const ImageWithZoomSection: React.FC<ImageWithZoomSectionProps> = ({
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
+      className={`relative w-full flex items-center justify-center overflow-hidden${
+        height ? "" : " min-h-screen"
+      }`}
+      style={height ? { height } : undefined}
     >
       {/* Animated image */}
-      <div className="absolute inset-0 w-full h-full z-0">
+      <div
+        className="absolute inset-0 w-full h-full z-0"
+        style={height ? { height } : undefined}
+      >
         <motion.img
           src={imageUrl}
           alt={alt}
-          className="snap-center w-full min-h-screen object-cover"
+          className={`snap-center w-full object-cover${
+            height ? "" : " min-h-screen"
+          }`}
           style={{
             willChange: "transform",
+            height: height ? "100%" : undefined,
+            maxHeight: height ? "100%" : undefined,
           }}
           animate={{
             scale: Math.max(2.2 - 1.2 * intersectionRatio, 1),
@@ -85,6 +97,7 @@ const ImageWithZoomSection: React.FC<ImageWithZoomSectionProps> = ({
       {/* Overlay */}
       <div
         className={`absolute inset-0 w-full h-full z-10 pointer-events-none ${overlayClassName}`}
+        style={height ? { height } : undefined}
       />
       {/* Optional children */}
       {children && (

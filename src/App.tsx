@@ -161,6 +161,11 @@ function App() {
           fadeUp={fadeUp}
           useInView={useInView}
         />
+        <ImageWithZoomSection
+          imageUrl="/images/backgrounds/grupo.jpg"
+          alt="Placeholder image"
+          height={600}
+        />
         <ProductosSection
           sectionRef={sectionRefs[5]}
           containerVariants={containerVariants}
