@@ -22,17 +22,41 @@ const ProduccionCard: React.FC<ProduccionCardProps> = ({
   description,
   custom,
   variants,
-}) => (
-  <motion.div
-    variants={variants}
-    custom={custom}
-    className="bg-black/30 rounded-xl shadow-lg px-6 py-16 flex flex-col items-center z-10"
-  >
-    <span className="text-4xl mb-2">{icon}</span>
-    <span className="font-semibold text-white/80 mb-1">{title}</span>
-    <span className="text-white/50 text-center text-sm">{description}</span>
-  </motion.div>
-);
+}) => {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.5 });
+  return (
+    <div
+      ref={ref}
+      className="bg-black/30 rounded-xl shadow-lg px-6 py-16 flex flex-col items-center z-10"
+    >
+      <motion.span
+        className="text-5xl mb-2"
+        initial={{ opacity: 0, x: 16 }}
+        animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 16 }}
+        transition={{ duration: 0.5, delay: 0.25 }}
+      >
+        {icon}
+      </motion.span>
+      <motion.span
+        className="font-semibold text-white/80 uppercase mb-1"
+        initial={{ opacity: 0, x: 12 }}
+        animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 12 }}
+        transition={{ duration: 0.5, delay: 0.32 }}
+      >
+        {title}
+      </motion.span>
+      <motion.span
+        className="text-white/50 text-center text-sm"
+        initial={{ opacity: 0, x: 10 }}
+        animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 10 }}
+        transition={{ duration: 0.5, delay: 0.38 }}
+      >
+        {description}
+      </motion.span>
+    </div>
+  );
+};
 
 const produccionCards = [
   {
