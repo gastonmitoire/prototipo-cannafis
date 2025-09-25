@@ -1,5 +1,45 @@
-import React from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
+import { useInView as useInViewLib } from "framer-motion";
+// Componente animado para canal de distribución
+const CanalDistribucion: React.FC<{ text: string }> = ({ text }) => {
+  const ref = useRef<HTMLParagraphElement | null>(null);
+  const inView = useInViewLib(ref, { amount: 0.7, once: false });
+  return (
+    <motion.p
+      ref={ref}
+      initial={{ opacity: 0, x: 16 }}
+      animate={
+        inView
+          ? {
+              opacity: 1,
+              x: 0,
+              transition: {
+                type: "spring" as const,
+                stiffness: 320,
+                damping: 28,
+                mass: 0.7,
+              },
+            }
+          : { opacity: 0, x: 16 }
+      }
+      className="text-right mt-4 text-white/70 italic flex-1 px-2 text-sm capitalize relative overflow-visible"
+      style={{ borderTop: "3px solid transparent" }}
+    >
+      <motion.span
+        initial={{ width: 0 }}
+        animate={
+          inView
+            ? { width: "100%", transition: { duration: 0.22, delay: 0.03 } }
+            : { width: 0 }
+        }
+        className="absolute left-0 top-0 h-0.5 bg-white/20 rounded-full"
+        style={{ borderRadius: 2, height: 3, background: "#ffffff33" }}
+      />
+      <span className="relative z-10 mt-2 block">{text}</span>
+    </motion.p>
+  );
+};
 interface ProductosSectionProps {
   sectionRef: React.RefObject<HTMLElement | null>;
   containerVariants: any;
@@ -83,7 +123,7 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
     <section
       id="productos"
       ref={sectionRef}
-      className="h-screen flex items-center justify-center px-4"
+      className="min-h-screen flex items-center justify-center px-4 pb-20"
     >
       <motion.div
         variants={containerVariants}
@@ -129,32 +169,64 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
             </ProductosCard>
             <ProductosCard>
               <motion.p
-                variants={fadeUp}
-                initial="hidden"
-                animate={inView ? "show" : "hidden"}
+                initial={{ opacity: 0, x: -16 }}
+                animate={
+                  inView
+                    ? {
+                        opacity: 1,
+                        x: 0,
+                        transition: {
+                          type: "spring" as const,
+                          stiffness: 320,
+                          damping: 28,
+                          mass: 0.7,
+                        },
+                      }
+                    : { opacity: 0, x: -16 }
+                }
+                className="text-4xl uppercase font-semibold text-left"
+              >
+                Cápsulas y comprimidos
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, x: 16 }}
+                animate={
+                  inView
+                    ? {
+                        opacity: 1,
+                        x: 0,
+                        transition: {
+                          type: "spring" as const,
+                          stiffness: 320,
+                          damping: 28,
+                          mass: 0.7,
+                        },
+                      }
+                    : { opacity: 0, x: 16 }
+                }
+                className="text-xl font-thin italic mt-7"
               >
                 Presentaciones adaptables a requerimientos de cada laboratorio o
                 institución
               </motion.p>
             </ProductosCard>
           </div>
-          {[
-            "Canales: farmacias magistrales",
-            "laboratorios",
-            "instituciones de salud",
-            "exportación a mercados regulados",
-            "convenios con ONGs bajo Reprocann.",
-          ].map((text) => (
-            <motion.p
-              key={text}
-              variants={fadeUp}
-              initial="hidden"
-              animate={inView ? "show" : "hidden"}
-              className="text-center mt-4 text-blue-900/80"
-            >
-              {text}
-            </motion.p>
-          ))}
+          <div>
+            <h3 className="text-xl font-bold text-center mt-8 mb-4 text-white/80">
+              Canales de distribución
+            </h3>
+            <div className="max-w-md mx-auto flex flex-wrap justify-center gap-2">
+              {[
+                "farmacias magistrales",
+                "laboratorios",
+                "instituciones de salud",
+                "exportación a mercados regulados",
+                "convenios con ONGs bajo Reprocann.",
+              ].map((text) => (
+                <CanalDistribucion key={text} text={text} />
+              ))}
+            </div>
+          </div>
         </div>
       </motion.div>
     </section>
