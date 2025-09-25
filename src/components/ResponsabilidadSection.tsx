@@ -12,7 +12,7 @@ const textoColaboramos =
 
 const ResponsabilidadSection: React.FC<ResponsabilidadSectionProps> = ({
   sectionRef,
-  containerVariants,
+  // containerVariants,
   fadeUp,
   useInView,
 }) => {

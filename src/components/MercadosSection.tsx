@@ -13,7 +13,7 @@ type MercadosCardProps = {
   icon?: ReactNode;
 };
 
-const MercadosCard: React.FC<MercadosCardProps> = ({ text, fadeUp, icon }) => {
+const MercadosCard: React.FC<MercadosCardProps> = ({ text, icon }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useInViewLib(ref, { amount: 0.5, once: false });
   return (

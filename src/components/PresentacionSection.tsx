@@ -10,7 +10,7 @@ interface PresentacionSectionProps {
 const PresentacionSection: React.FC<PresentacionSectionProps> = ({
   sectionRef,
   containerVariants,
-  fadeUp,
+  // fadeUp,
   useInView,
 }) => (
   <section

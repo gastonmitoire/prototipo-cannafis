@@ -20,8 +20,8 @@ const ProduccionCard: React.FC<ProduccionCardProps> = ({
   icon,
   title,
   description,
-  custom,
-  variants,
+  // custom,
+  // variants,
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.5 });

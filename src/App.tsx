@@ -27,7 +27,7 @@ const fadeUp = {
   }),
 };
 import { useRef, useState, useEffect } from "react";
-import { useInView, motion } from "framer-motion";
+import { useInView } from "framer-motion";
 import ShadcnHeader from "./components/ShadcnHeader";
 import FuturistMenu from "./components/FuturistMenu";
 import HeroSection from "./components/HeroSection";
@@ -42,10 +42,7 @@ import ImageWithZoomSection from "./components/ImageWithZoomSection";
 import Footer from "./components/Footer";
 
 function App() {
-  // Estado para animar el zoom de la imagen al entrar/salir apenas inicia el scroll
-  const [zoomedIn, setZoomedIn] = useState(false);
-  // Ref y estado para la sección con imagen
-  const imagenSectionRef = useRef<HTMLElement>(null);
+  // (Variables de zoom y ref de imagen eliminadas: no usadas)
   // Estado para el menú hamburguesa y visibilidad del header
   const [menuOpen, setMenuOpen] = useState(false);
   const [showHeader, setShowHeader] = useState(false);

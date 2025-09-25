@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface ImageWithZoomSectionProps {
   imageUrl: string;
@@ -18,10 +18,10 @@ const ImageWithZoomSection: React.FC<ImageWithZoomSectionProps> = ({
 }) => {
   const sectionRef = useRef<HTMLElement>(null);
   // Usar useInView para obtener el ratio de visibilidad
-  const inView = useInView(sectionRef, {
-    amount: "some",
-    // triggerOnce: false
-  });
+  // const inView = useInView(sectionRef, {
+  //   amount: "some",
+  //   // triggerOnce: false
+  // });
   // Usar IntersectionObserverEntry para obtener el ratio
   // Inicializar en 0 para que el zoom ya esté aumentado antes de entrar
   const [intersectionRatio, setIntersectionRatio] = React.useState(0);

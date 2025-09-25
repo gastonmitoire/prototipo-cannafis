@@ -149,8 +149,8 @@ interface CertificacionesSectionProps {
 
 const CertificacionesSection: React.FC<CertificacionesSectionProps> = ({
   sectionRef,
-  containerVariants,
-  fadeUp,
+  // containerVariants,
+  // fadeUp,
   useInView,
 }) => {
   const bottomTextRef = React.useRef<HTMLParagraphElement>(null);

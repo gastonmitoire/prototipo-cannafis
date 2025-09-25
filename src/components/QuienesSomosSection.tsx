@@ -9,8 +9,8 @@ interface QuienesSomosSectionProps {
 
 const QuienesSomosSection: React.FC<QuienesSomosSectionProps> = ({
   sectionRef,
-  containerVariants,
-  fadeUp,
+  // containerVariants,
+  // fadeUp,
   useInView,
 }) => (
   <section
