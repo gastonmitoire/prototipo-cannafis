@@ -124,6 +124,12 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
       id="productos"
       ref={sectionRef}
       className="min-h-screen flex items-center justify-center px-4 pb-20"
+      style={{
+        backgroundImage:
+          'url("https://www.transparenttextures.com/patterns/skulls.png")',
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
     >
       <motion.div
         variants={containerVariants}
