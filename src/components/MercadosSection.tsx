@@ -19,7 +19,7 @@ const MercadosCard: React.FC<MercadosCardProps> = ({ text, fadeUp, icon }) => {
   return (
     <div
       ref={ref}
-      className="bg-black/30 rounded-lg p-6 text-xl text-white/90 mb-4 shadow-lg flex flex-col items-center"
+      className="bg-black/30 backdrop-blur-xl rounded-lg px-6 py-16 text-xl text-white/90 mb-4 shadow-lg flex flex-col items-center"
     >
       {icon && (
         <motion.span
@@ -36,7 +36,7 @@ const MercadosCard: React.FC<MercadosCardProps> = ({ text, fadeUp, icon }) => {
             mass: 0.7,
             delay: 0.05,
           }}
-          className="mb-2 text-4xl drop-shadow"
+          className="mb-2 text-5xl drop-shadow"
         >
           {icon}
         </motion.span>
@@ -45,7 +45,7 @@ const MercadosCard: React.FC<MercadosCardProps> = ({ text, fadeUp, icon }) => {
         initial={{ opacity: 0, y: 18 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
         transition={{ duration: 0.48, delay: 0.13, ease: [0.22, 1, 0.36, 1] }}
-        className="block text-center"
+        className="block text-center font-semibold"
       >
         {text}
       </motion.span>
@@ -78,11 +78,16 @@ const MercadosSection: React.FC<MercadosSectionProps> = ({
     <section
       id="mercados"
       ref={sectionRef}
-      className="relative h-screen flex items-center justify-center bg-gradient-to-b from-slate-900 via-slate-900/50 to-slate-900/70 px-4"
+      className="relative h-screen flex items-center justify-center bg-gradient-to-br from-white/10 via-transparent to-cyan-200/10 px-4"
+      style={{
+        backgroundImage:
+          'url("https://www.transparenttextures.com/patterns/classy-fabric.png")',
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
     >
-      <div className="absolute bg-gradient-to-b from-slate-900 w-full h-52 top-0" />
       <div className="flex flex-col items-center w-full z-10">
-        <div className="w-full">
+        <div className="w-full max-w-6xl">
           <motion.h2
             variants={fadeUp}
             initial="hidden"
@@ -103,7 +108,6 @@ const MercadosSection: React.FC<MercadosSectionProps> = ({
           </div>
         </div>
       </div>
-      <div className="absolute bg-gradient-to-t from-slate-900 w-full h-52 bottom-0" />
     </section>
   );
 };

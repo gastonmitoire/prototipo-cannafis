@@ -179,9 +179,13 @@ function App() {
         />
         <MercadosSection
           sectionRef={sectionRefs[6]}
-          containerVariants={containerVariants}
           fadeUp={fadeUp}
           useInView={useInView}
+        />
+        <ImageWithZoomSection
+          imageUrl="/images/backgrounds/luces.jpg"
+          alt="Placeholder image"
+          height={770}
         />
         <ResponsabilidadSection
           sectionRef={sectionRefs[7]}
