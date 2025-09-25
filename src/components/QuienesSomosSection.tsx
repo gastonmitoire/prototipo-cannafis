@@ -16,7 +16,7 @@ const QuienesSomosSection: React.FC<QuienesSomosSectionProps> = ({
   <section
     id="quienes-somos"
     ref={sectionRef}
-    className="snap-center h-screen grid grid-cols-5 bg-gradient-to-br from-green-50 via-white to-blue-100 text-blue-900 px-4"
+    className="h-screen bg-gradient-to-br from-green-50 via-white to-blue-100 text-blue-900 px-4"
     style={{
       backgroundImage:
         'url("https://www.transparenttextures.com/patterns/shattered.png")',
@@ -32,7 +32,7 @@ const QuienesSomosSection: React.FC<QuienesSomosSectionProps> = ({
           : { opacity: 0, filter: "blur(8px)" }
       }
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="col-start-2 col-end-4 flex flex-col justify-end self-end px-20 pb-7 bg-black/30 backdrop-blur-md h-[80%] w-full"
+      className="flex flex-col max-w-2xl h-full px-20 pt-52 mx-auto bg-black/30 backdrop-blur-md"
     >
       <motion.h2
         initial={{ opacity: 0, y: -32 }}

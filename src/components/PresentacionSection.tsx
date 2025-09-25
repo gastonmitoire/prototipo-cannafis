@@ -16,7 +16,7 @@ const PresentacionSection: React.FC<PresentacionSectionProps> = ({
   <section
     id="presentacion"
     ref={sectionRef}
-    className="snap-center h-screen flex items-center justify-center bg-slate-900/80 px-4 relative overflow-hidden"
+    className="snap-center h-screen flex items-center justify-center bg-gradient-to-b from-slate-900/90 via-slate-900/70 to-slate-900/90 px-4 relative overflow-hidden"
   >
     {/* Divider decorativo superior */}
     {/* <svg
@@ -32,6 +32,7 @@ const PresentacionSection: React.FC<PresentacionSectionProps> = ({
       />
     </svg> */}
     {/* Blob decorativo derecho */}
+    <div className="absolute bg-gradient-to-b from-slate-900 w-full h-52 top-0" />
     <div className="absolute right-0 top-1/3 w-72 h-72 bg-blue-200/40 rounded-full blur-2xl z-0" />
     <motion.div
       variants={containerVariants}
