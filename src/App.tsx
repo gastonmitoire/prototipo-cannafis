@@ -142,7 +142,7 @@ function App() {
           useInView={useInView}
         />
         <ImageWithZoomSection
-          imageUrl="https://cdn.labmanager.com/assets/articleNo/21736/aImg/39650/regulation-in-cannabis-labs-l.webp"
+          imageUrl="/images/backgrounds/cogollo.jpg"
           alt="Placeholder image"
         />
         <ProduccionSection
@@ -150,6 +150,10 @@ function App() {
           containerVariants={containerVariants}
           fadeUp={fadeUp}
           useInView={useInView}
+        />
+        <ImageWithZoomSection
+          imageUrl="/images/backgrounds/estante.jpg"
+          alt="Placeholder image"
         />
         <CertificacionesSection
           sectionRef={sectionRefs[4]}

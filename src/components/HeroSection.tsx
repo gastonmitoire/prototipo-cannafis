@@ -23,11 +23,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-green-100/30 rounded-full blur-2xl animate-pulse z-0" />
       <div
         style={{
-          backgroundImage:
-            'url("https://brocku.ca/brock-news/wp-content/uploads/2025/05/GettyImages-1357846265-1600x1067.jpg?x56978")',
+          backgroundImage: 'url("/images/backgrounds/cogollos.jpg")',
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundAttachment: "fixed",
+          backgroundAttachment: "scroll",
         }}
         className="absolute inset-0 opacity-10 z-0"
       />

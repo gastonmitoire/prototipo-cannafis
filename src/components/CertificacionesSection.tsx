@@ -73,7 +73,6 @@ const certificaciones = [
   },
 ];
 import React from "react";
-import { motion } from "framer-motion";
 
 function CertCard({
   logo,
@@ -88,22 +87,11 @@ function CertCard({
   bg: string;
   side?: "left" | "right";
 }) {
-  const [hovered, setHovered] = React.useState(false);
   return (
-    <motion.div
+    <div
       className={`flex flex-col md:flex-row items-center md:items-start gap-6 p-6 rounded-2xl shadow-lg border border-green-100 bg-gradient-to-br ${bg} ${
         side === "right" ? "md:flex-row-reverse" : ""
       }`}
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{
-        duration: 0.7,
-        type: "spring",
-        stiffness: 120,
-        damping: 18,
-      }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
       <div className="flex-shrink-0 flex items-center justify-center">
         {logo}
@@ -115,22 +103,12 @@ function CertCard({
             : "items-center md:items-start text-center md:text-left"
         } w-full`}
       >
-        <motion.div
-          animate={hovered ? { scale: 1.045, y: -2 } : { scale: 1, y: 0 }}
-          transition={{ type: "spring", stiffness: 180, damping: 18 }}
-          className="font-bold text-3xl md:text-4xl text-blue-900 mb-2"
-        >
+        <div className="font-bold text-3xl md:text-4xl text-blue-900 mb-2">
           {title}
-        </motion.div>
-        <motion.div
-          animate={hovered ? { scale: 1.03, y: -1 } : { scale: 1, y: 0 }}
-          transition={{ type: "spring", stiffness: 180, damping: 18 }}
-          className="text-lg md:text-xl text-blue-900/70"
-        >
-          {subtitle}
-        </motion.div>
+        </div>
+        <div className="text-lg md:text-xl text-blue-900/70">{subtitle}</div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 interface CertificacionesSectionProps {
@@ -151,19 +129,11 @@ const CertificacionesSection: React.FC<CertificacionesSectionProps> = ({
     ref={sectionRef}
     className="snap-center min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-green-50 to-blue-100 text-blue-900 w-full px-8"
   >
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      animate={useInView(sectionRef, { amount: 0.4 }) ? "show" : "hidden"}
-      className="flex flex-col items-center w-full z-10"
-    >
-      <motion.div variants={fadeUp} className="w-full">
-        <motion.h2
-          variants={fadeUp}
-          className="text-3xl font-bold mb-4 text-green-700 text-center"
-        >
+    <div className="flex flex-col items-center w-full z-10">
+      <div className="w-full">
+        <h2 className="text-3xl font-bold mb-4 text-green-700 text-center">
           Certificaciones
-        </motion.h2>
+        </h2>
         {/* Cards de certificación grandes y reutilizables */}
         <div className="flex flex-col gap-8 my-8 w-full">
           {certificaciones.map((cert, index) => (
@@ -174,12 +144,12 @@ const CertificacionesSection: React.FC<CertificacionesSectionProps> = ({
             />
           ))}
         </div>
-        <motion.p variants={fadeUp} className="text-center text-blue-900/80">
+        <p className="text-center text-blue-900/80">
           Nuestras certificaciones garantizan la calidad y seguridad de nuestros
           productos, cumpliendo con los más altos estándares internacionales.
-        </motion.p>
-      </motion.div>
-    </motion.div>
+        </p>
+      </div>
+    </div>
   </section>
 );
 
