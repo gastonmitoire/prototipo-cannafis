@@ -39,6 +39,7 @@ import ProductosSection from "./components/ProductosSection";
 import MercadosSection from "./components/MercadosSection";
 import ResponsabilidadSection from "./components/ResponsabilidadSection";
 import ImageWithZoomSection from "./components/ImageWithZoomSection";
+import Footer from "./components/Footer";
 
 function App() {
   // Estado para animar el zoom de la imagen al entrar/salir apenas inicia el scroll
@@ -194,6 +195,7 @@ function App() {
           useInView={useInView}
         />
       </main>
+      <Footer />
     </div>
   );
 }
