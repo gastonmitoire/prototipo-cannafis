@@ -119,18 +119,34 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
   useInView,
 }) => {
   const inView = useInView(sectionRef, { amount: 0.4 });
+  const [backgroundStyle, setBackgroundStyle] = React.useState<
+    "skulls" | "stardust"
+  >("skulls");
+
   return (
     <section
       id="productos"
       ref={sectionRef}
-      className="min-h-screen flex items-center justify-center px-4 pb-20"
+      className="relative min-h-screen flex items-center justify-center px-4 pb-20"
       style={{
         backgroundImage:
-          'url("https://www.transparenttextures.com/patterns/skulls.png")',
+          'url("https://www.transparenttextures.com/patterns/' +
+          (backgroundStyle === "skulls" ? "skulls" : "stardust") +
+          '.png")',
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
       }}
     >
+      <button
+        onClick={() =>
+          setBackgroundStyle((prev) =>
+            prev === "skulls" ? "stardust" : "skulls"
+          )
+        }
+        className="absolute top-4 right-4 bg-white/20 p-2 rounded z-30"
+      >
+        Cambiar fondo
+      </button>
       <motion.div
         variants={containerVariants}
         initial="hidden"

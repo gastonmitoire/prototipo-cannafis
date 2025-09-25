@@ -2,56 +2,74 @@ import React from "react";
 import { motion } from "framer-motion";
 interface MercadosSectionProps {
   sectionRef: React.RefObject<HTMLElement | null>;
-  containerVariants: any;
   fadeUp: any;
   useInView: any;
 }
 
+interface MercadosCardProps {
+  text: string;
+  fadeUp: any;
+  inView: boolean;
+}
+
+const MercadosCard: React.FC<MercadosCardProps> = ({
+  text,
+  fadeUp,
+  inView,
+}) => (
+  <motion.div
+    variants={fadeUp}
+    initial="hidden"
+    animate={inView ? "show" : "hidden"}
+    className="bg-black/30 rounded-lg p-6 text-lg text-white/90 mb-4 shadow-lg"
+  >
+    {text}
+  </motion.div>
+);
+
+const mercadosData = [
+  "Distribución nacional a instituciones habilitadas.",
+  "Exportación a mercados regulados con estándares internacionales.",
+  "Acuerdos estratégicos con organizaciones del sector salud y biotecnología.",
+];
+
 const MercadosSection: React.FC<MercadosSectionProps> = ({
   sectionRef,
-  containerVariants,
   fadeUp,
   useInView,
-}) => (
-  <section
-    id="mercados"
-    ref={sectionRef}
-    className="snap-center h-screen flex items-center justify-center bg-gradient-to-br from-white via-green-50 to-blue-100 text-blue-900 px-4"
-  >
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      animate={useInView(sectionRef, { amount: 0.4 }) ? "show" : "hidden"}
-      className="flex flex-col items-center w-full z-10"
+}) => {
+  const inView = useInView(sectionRef, { amount: 0.4 });
+  return (
+    <section
+      id="mercados"
+      ref={sectionRef}
+      className="relative h-screen flex items-center justify-center bg-gradient-to-b from-slate-900 via-slate-900/50 to-slate-900/70 px-4"
     >
-      <motion.div
-        variants={fadeUp}
-        className="bg-white/90 rounded-2xl shadow-xl p-10 max-w-2xl border border-green-100"
-      >
-        <motion.h2
-          variants={fadeUp}
-          className="text-3xl font-bold mb-4 text-green-700 text-center"
-        >
-          Mercados y alianzas
-        </motion.h2>
-        <motion.ul
-          variants={containerVariants}
-          className="text-left list-disc list-inside text-blue-900/90 space-y-2"
-        >
-          <motion.li variants={fadeUp}>
-            Distribución nacional a instituciones habilitadas.
-          </motion.li>
-          <motion.li variants={fadeUp}>
-            Exportación a mercados regulados con estándares internacionales.
-          </motion.li>
-          <motion.li variants={fadeUp}>
-            Acuerdos estratégicos con organizaciones del sector salud y
-            biotecnología.
-          </motion.li>
-        </motion.ul>
-      </motion.div>
-    </motion.div>
-  </section>
-);
+      <div className="absolute bg-gradient-to-b from-slate-900 w-full h-52 top-0" />
+      <div className="flex flex-col items-center w-full z-10">
+        <div className="max-w-2xl">
+          <motion.h2
+            variants={fadeUp}
+            initial="hidden"
+            animate={inView ? "show" : "hidden"}
+            className="text-3xl font-bold mb-4 text-white/80 text-center uppercase"
+          >
+            Mercados y alianzas
+          </motion.h2>
+          <div className="flex flex-col gap-3 mt-6">
+            {mercadosData.map((text) => (
+              <MercadosCard
+                key={text}
+                text={text}
+                fadeUp={fadeUp}
+                inView={inView}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default MercadosSection;
