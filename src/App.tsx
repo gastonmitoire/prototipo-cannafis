@@ -172,6 +172,11 @@ function App() {
           fadeUp={fadeUp}
           useInView={useInView}
         />
+        <ImageWithZoomSection
+          imageUrl="/images/backgrounds/rojo.jpg"
+          alt="Placeholder image"
+          height={770}
+        />
         <MercadosSection
           sectionRef={sectionRefs[6]}
           containerVariants={containerVariants}
