@@ -47,7 +47,7 @@ const QuienesSomosSection: React.FC<QuienesSomosSectionProps> = ({
           type: "spring",
           stiffness: 60,
         }}
-        className="text-4xl font-bold mb-8 text-white/30 uppercase "
+        className="text-4xl font-bold mb-8 text-white/30 uppercase"
       >
         Quiénes somos
       </motion.h2>

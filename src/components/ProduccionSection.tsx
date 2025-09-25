@@ -22,24 +22,17 @@ const ProduccionCard: React.FC<ProduccionCardProps> = ({
   description,
   custom,
   variants,
-}) => {
-  const ref = React.useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { amount: 1 });
-  return (
-    <motion.div
-      ref={ref}
-      variants={variants}
-      custom={custom}
-      initial="hidden"
-      animate={inView ? "show" : "hidden"}
-      className="bg-black/30 rounded-xl shadow-lg px-6 py-16 flex flex-col items-center z-10"
-    >
-      <span className="text-4xl mb-2">{icon}</span>
-      <span className="font-semibold text-white/80 mb-1">{title}</span>
-      <span className="text-white/50 text-center text-sm">{description}</span>
-    </motion.div>
-  );
-};
+}) => (
+  <motion.div
+    variants={variants}
+    custom={custom}
+    className="bg-black/30 rounded-xl shadow-lg px-6 py-16 flex flex-col items-center z-10"
+  >
+    <span className="text-4xl mb-2">{icon}</span>
+    <span className="font-semibold text-white/80 mb-1">{title}</span>
+    <span className="text-white/50 text-center text-sm">{description}</span>
+  </motion.div>
+);
 
 const produccionCards = [
   {
@@ -75,10 +68,9 @@ const containerVariants = {
   },
 };
 const fadeUp = {
-  hidden: { opacity: 0, y: 32, scale: 0.98 },
+  hidden: { opacity: 0, scale: 0.7 },
   show: (i = 0) => ({
     opacity: 1,
-    y: 0,
     scale: 1,
     transition: {
       type: "spring" as const,
@@ -103,7 +95,7 @@ const ProduccionSection: React.FC<ProduccionSectionProps> = ({
   <section
     id="produccion"
     ref={sectionRef}
-    className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-900/90 via-slate-900/70 to-slate-900/90 px-4 pt-20"
+    className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-900/90 via-slate-900/80 to-slate-900 px-4 pt-20"
   >
     <div className="absolute bg-gradient-to-b from-slate-900 w-full h-52 top-0 z-0" />
     <motion.div
@@ -122,13 +114,20 @@ const ProduccionSection: React.FC<ProduccionSectionProps> = ({
             variants={fadeOpacity}
             initial="hidden"
             animate={inView ? "show" : "hidden"}
-            className="text-3xl font-bold mb-8 text-white/80 text-center"
+            className="text-4xl font-bold mb-8 text-white/30 uppercase"
           >
             Producción y calidad
           </motion.h2>
         );
       })()}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+      {/* Cards con stagger: animan juntas cuando el contenedor es visible */}
+      {/* Cards: se mantienen visibles mientras la sección está visible */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate={useInView(sectionRef, { amount: 0.4 }) ? "show" : "hidden"}
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl"
+      >
         {produccionCards.map((card, idx) => (
           <ProduccionCard
             key={card.title}
@@ -139,7 +138,7 @@ const ProduccionSection: React.FC<ProduccionSectionProps> = ({
             custom={idx}
           />
         ))}
-      </div>
+      </motion.div>
       {/* Párrafo con animación solo cuando es visible */}
       {(() => {
         const ref = React.useRef<HTMLParagraphElement>(null);
