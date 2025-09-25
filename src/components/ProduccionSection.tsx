@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 interface ProduccionSectionProps {
   sectionRef: React.RefObject<HTMLElement | null>;
   containerVariants: any;
@@ -7,86 +7,168 @@ interface ProduccionSectionProps {
   useInView: any;
 }
 
+// Card reutilizable para producción
+interface ProduccionCardProps {
+  icon: string;
+  title: string;
+  description: string;
+  custom: number;
+  variants: any;
+}
+
+const ProduccionCard: React.FC<ProduccionCardProps> = ({
+  icon,
+  title,
+  description,
+  custom,
+  variants,
+}) => {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 1 });
+  return (
+    <motion.div
+      ref={ref}
+      variants={variants}
+      custom={custom}
+      initial="hidden"
+      animate={inView ? "show" : "hidden"}
+      className="bg-black/30 rounded-xl shadow-lg px-6 py-16 flex flex-col items-center z-10"
+    >
+      <span className="text-4xl mb-2">{icon}</span>
+      <span className="font-semibold text-white/80 mb-1">{title}</span>
+      <span className="text-white/50 text-center text-sm">{description}</span>
+    </motion.div>
+  );
+};
+
+const produccionCards = [
+  {
+    icon: "🌱",
+    title: "Cultivo controlado",
+    description: "Bajo condiciones óptimas y monitoreo constante.",
+  },
+  {
+    icon: "💧",
+    title: "Secado técnico",
+    description: "Preservando la integridad de los principios activos.",
+  },
+  {
+    icon: "🏷️",
+    title: "Envasado GMP/BPF",
+    description: "En origen, cumpliendo normas internacionales.",
+  },
+  {
+    icon: "🧪",
+    title: "Análisis de laboratorio",
+    description: "Garantizando pureza y consistencia en cada lote.",
+  },
+];
+
+// Animaciones sutiles y profesionales
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.13,
+      delayChildren: 0.08,
+    },
+  },
+};
+const fadeUp = {
+  hidden: { opacity: 0, y: 32, scale: 0.98 },
+  show: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring" as const,
+      stiffness: 180,
+      damping: 18,
+      mass: 0.7,
+      duration: 0.7,
+      delay: i * 0.13,
+      ease: "easeInOut",
+    },
+  }),
+};
+const fadeOpacity = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { duration: 0.7 } },
+};
+
 const ProduccionSection: React.FC<ProduccionSectionProps> = ({
   sectionRef,
-  containerVariants,
-  fadeUp,
   useInView,
 }) => (
   <section
     id="produccion"
     ref={sectionRef}
-    className="snap-center h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-green-50 to-white text-blue-900 px-4"
+    className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-900/90 via-slate-900/70 to-slate-900/90 px-4 pt-20"
   >
+    <div className="absolute bg-gradient-to-b from-slate-900 w-full h-52 top-0 z-0" />
     <motion.div
       variants={containerVariants}
       initial="hidden"
       animate={useInView(sectionRef, { amount: 0.4 }) ? "show" : "hidden"}
       className="flex flex-col items-center w-full z-10"
     >
-      <motion.h2
-        variants={fadeUp}
-        className="text-3xl font-bold mb-8 text-blue-800 text-center"
-      >
-        Producción y calidad
-      </motion.h2>
+      {/* Título con animación solo cuando es visible */}
+      {(() => {
+        const ref = React.useRef<HTMLHeadingElement>(null);
+        const inView = useInView(ref, { amount: 1 });
+        return (
+          <motion.h2
+            ref={ref}
+            variants={fadeOpacity}
+            initial="hidden"
+            animate={inView ? "show" : "hidden"}
+            className="text-3xl font-bold mb-8 text-white/80 text-center"
+          >
+            Producción y calidad
+          </motion.h2>
+        );
+      })()}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
-        <motion.div
-          variants={fadeUp}
-          className="bg-white/90 rounded-xl shadow-lg p-6 border border-blue-100 flex flex-col items-center"
-        >
-          <span className="text-4xl mb-2">🌱</span>
-          <span className="font-semibold text-blue-800 mb-1">
-            Cultivo controlado
-          </span>
-          <span className="text-blue-900/80 text-center text-sm">
-            Bajo condiciones óptimas y monitoreo constante.
-          </span>
-        </motion.div>
-        <motion.div
-          variants={fadeUp}
-          className="bg-white/90 rounded-xl shadow-lg p-6 border border-blue-100 flex flex-col items-center"
-        >
-          <span className="text-4xl mb-2">💧</span>
-          <span className="font-semibold text-blue-800 mb-1">
-            Secado técnico
-          </span>
-          <span className="text-blue-900/80 text-center text-sm">
-            Preservando la integridad de los principios activos.
-          </span>
-        </motion.div>
-        <motion.div
-          variants={fadeUp}
-          className="bg-white/90 rounded-xl shadow-lg p-6 border border-blue-100 flex flex-col items-center"
-        >
-          <span className="text-4xl mb-2">🏷️</span>
-          <span className="font-semibold text-blue-800 mb-1">
-            Envasado GMP/BPF
-          </span>
-          <span className="text-blue-900/80 text-center text-sm">
-            En origen, cumpliendo normas internacionales.
-          </span>
-        </motion.div>
-        <motion.div
-          variants={fadeUp}
-          className="bg-white/90 rounded-xl shadow-lg p-6 border border-blue-100 flex flex-col items-center"
-        >
-          <span className="text-4xl mb-2">🧪</span>
-          <span className="font-semibold text-blue-800 mb-1">
-            Análisis de laboratorio
-          </span>
-          <span className="text-blue-900/80 text-center text-sm">
-            Garantizando pureza y consistencia en cada lote.
-          </span>
-        </motion.div>
+        {produccionCards.map((card, idx) => (
+          <ProduccionCard
+            key={card.title}
+            icon={card.icon}
+            title={card.title}
+            description={card.description}
+            variants={fadeUp}
+            custom={idx}
+          />
+        ))}
       </div>
-      <motion.p
-        variants={fadeUp}
-        className="text-center mt-8 text-blue-900/80 max-w-2xl"
-      >
-        Todos los lotes cuentan con codificación y trazabilidad total,
-        cumpliendo con los requisitos de las farmacopeas internacionales.
-      </motion.p>
+      {/* Párrafo con animación solo cuando es visible */}
+      {(() => {
+        const ref = React.useRef<HTMLParagraphElement>(null);
+        const inView = useInView(ref, { amount: 1 });
+        return (
+          <motion.p
+            ref={ref}
+            variants={fadeOpacity}
+            initial="hidden"
+            animate={inView ? "show" : "hidden"}
+            className="text-center text-2xl mt-8 pt-24 pb-52 text-white/80 max-w-2xl"
+          >
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.2 }}
+              transition={{ duration: 1.5 }}
+              className="absolute inset-0 -z-10 opacity-20"
+              style={{
+                backgroundImage:
+                  'url("https://www.transparenttextures.com/patterns/shattered.png")',
+                backgroundPosition: "center",
+                backgroundAttachment: "fixed",
+              }}
+            />
+            Todos los lotes cuentan con codificación y trazabilidad total,
+            cumpliendo con los requisitos de las farmacopeas internacionales.
+          </motion.p>
+        );
+      })()}
     </motion.div>
   </section>
 );
