@@ -149,7 +149,7 @@ const ProduccionSection: React.FC<ProduccionSectionProps> = ({
             variants={fadeOpacity}
             initial="hidden"
             animate={inView ? "show" : "hidden"}
-            className="text-center text-2xl mt-8 pt-24 pb-52 text-white/80 max-w-2xl"
+            className="text-center text-2xl text-white/80 font-semibold mt-8 pt-24 pb-52 max-w-2xl"
           >
             <motion.div
               initial={{ opacity: 0 }}

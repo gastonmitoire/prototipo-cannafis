@@ -2,16 +2,11 @@
 const certificaciones = [
   {
     logo: (
-      <svg width="110" height="110" fill="none" viewBox="0 0 36 36">
-        <circle cx="18" cy="18" r="16" fill="#6366f1" opacity=".15" />
-        <path
-          d="M18 12v12M12 18h12"
-          stroke="#6366f1"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-        />
-        <circle cx="18" cy="18" r="12" stroke="#6366f1" strokeWidth="2.2" />
-      </svg>
+      <img
+        src="https://cosantiago.com.ar/controladores/resize.php?carpeta=actualidades&width=850&height=0&file=COS1570536621U7.jpg"
+        alt="ANMAT Logo"
+        className="w-32 h-32 object-contain rounded-full bg-white/80 border border-green-200 shadow"
+      />
     ),
     title: "ANMAT",
     subtitle: "Disposición N° DI-2025-5561",
@@ -44,16 +39,11 @@ const certificaciones = [
   },
   {
     logo: (
-      <svg width="110" height="110" fill="none" viewBox="0 0 36 36">
-        <circle cx="18" cy="18" r="16" fill="#22c55e" opacity=".15" />
-        <path
-          d="M12 18h12M18 12v12"
-          stroke="#22c55e"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-        />
-        <circle cx="18" cy="18" r="12" stroke="#22c55e" strokeWidth="2.2" />
-      </svg>
+      <img
+        src="https://tb-farming.com/wp-content/uploads/2024/01/GACP-LOGO.png"
+        alt="Control Unión Logo"
+        className="w-32 h-32 object-contain pl-3.5 rounded-full bg-white/80 border border-green-200 shadow"
+      />
     ),
     title: "Control Unión",
     subtitle: "Cumplimiento GACP y calidad vegetal exportable",
@@ -62,7 +52,7 @@ const certificaciones = [
   {
     logo: (
       <img
-        src="/gmp-certified-logo.png"
+        src="https://static.vecteezy.com/system/resources/previews/021/863/065/non_2x/gmp-certified-or-good-manufacturing-practice-certified-badge-stamp-icon-seal-label-tag-emblem-for-cbd-label-oil-and-packaging-design-illustration-vector.jpg"
         alt="GMP Certified Logo"
         className="w-32 h-32 object-contain rounded-full bg-white/80 border border-green-200 shadow"
       />
@@ -79,34 +69,22 @@ function CertCard({
   title,
   subtitle,
   bg,
-  side = "left",
 }: {
   logo: React.ReactNode;
   title: string;
   subtitle: string;
   bg: string;
-  side?: "left" | "right";
 }) {
   return (
     <div
-      className={`flex flex-col md:flex-row items-center md:items-start gap-6 p-6 rounded-2xl shadow-lg border border-green-100 bg-gradient-to-br ${bg} ${
-        side === "right" ? "md:flex-row-reverse" : ""
-      }`}
+      className={`flex flex-col items-center justify-center aspect-square max-w-xs w-full mx-auto p-8 rounded-3xl shadow-2xl border border-blue-100 bg-gradient-to-br ${bg}`}
     >
-      <div className="flex-shrink-0 flex items-center justify-center">
-        {logo}
-      </div>
-      <div
-        className={`flex flex-col ${
-          side === "right"
-            ? "items-center md:items-end text-center md:text-right"
-            : "items-center md:items-start text-center md:text-left"
-        } w-full`}
-      >
-        <div className="font-bold text-3xl md:text-4xl text-blue-900 mb-2">
+      <div className="mb-6 flex items-center justify-center w-full">{logo}</div>
+      <div className="flex flex-col items-center text-center w-full">
+        <div className="font-bold text-2xl md:text-3xl text-blue-900 mb-2">
           {title}
         </div>
-        <div className="text-lg md:text-xl text-blue-900/70">{subtitle}</div>
+        <div className="text-base md:text-lg text-blue-900/70">{subtitle}</div>
       </div>
     </div>
   );
@@ -127,24 +105,20 @@ const CertificacionesSection: React.FC<CertificacionesSectionProps> = ({
   <section
     id="certificaciones"
     ref={sectionRef}
-    className="snap-center min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-green-50 to-blue-100 text-blue-900 w-full px-8"
+    className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-green-50 to-blue-100 text-blue-900 w-full px-8 pt-5"
   >
     <div className="flex flex-col items-center w-full z-10">
       <div className="w-full">
-        <h2 className="text-3xl font-bold mb-4 text-green-700 text-center">
+        <h2 className="text-4xl font-bold mb-8 text-slate-900 text-center pt-12 pb-5 uppercase">
           Certificaciones
         </h2>
         {/* Cards de certificación grandes y reutilizables */}
-        <div className="flex flex-col gap-8 my-8 w-full">
-          {certificaciones.map((cert, index) => (
-            <CertCard
-              key={cert.title}
-              {...cert}
-              side={index % 2 === 0 ? "left" : "right"}
-            />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 my-8 w-full max-w-3xl mx-auto">
+          {certificaciones.map((cert) => (
+            <CertCard key={cert.title} {...cert} />
           ))}
         </div>
-        <p className="text-center text-blue-900/80">
+        <p className="text-center text-2xl text-slate-900 font-semibold mt-8 pt-24 pb-52 mx-auto max-w-2xl">
           Nuestras certificaciones garantizan la calidad y seguridad de nuestros
           productos, cumpliendo con los más altos estándares internacionales.
         </p>
