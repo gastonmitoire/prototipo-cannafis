@@ -1,5 +1,6 @@
 import React from "react";
 import { motion, useInView } from "framer-motion";
+import Title from "./ui/title";
 interface ProduccionSectionProps {
   sectionRef: React.RefObject<HTMLElement | null>;
   containerVariants: any;
@@ -28,7 +29,7 @@ const ProduccionCard: React.FC<ProduccionCardProps> = ({
   return (
     <div
       ref={ref}
-      className="bg-black/30 rounded-xl shadow-lg px-6 py-16 flex flex-col items-center z-10"
+      className="bg-black/30 rounded-xl shadow-lg px-6 py-28 flex flex-col items-center z-10"
     >
       <motion.span
         className="text-5xl mb-2"
@@ -38,16 +39,9 @@ const ProduccionCard: React.FC<ProduccionCardProps> = ({
       >
         {icon}
       </motion.span>
+      <Title>{title}</Title>
       <motion.span
-        className="font-semibold text-white/80 uppercase mb-1"
-        initial={{ opacity: 0, x: 12 }}
-        animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 12 }}
-        transition={{ duration: 0.5, delay: 0.32 }}
-      >
-        {title}
-      </motion.span>
-      <motion.span
-        className="text-white/50 text-center text-sm"
+        className="text-white/50 text-center"
         initial={{ opacity: 0, x: 10 }}
         animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 10 }}
         transition={{ duration: 0.5, delay: 0.38 }}
@@ -119,29 +113,23 @@ const ProduccionSection: React.FC<ProduccionSectionProps> = ({
   <section
     id="produccion"
     ref={sectionRef}
-    className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-900/90 via-slate-900/80 to-slate-900 px-4 pt-20"
+    className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-900/90 via-slate-900/70 to-slate-900/40 px-4 pt-20"
   >
     <div className="absolute bg-gradient-to-b from-slate-900 w-full h-52 top-0 z-0" />
     <motion.div
       variants={containerVariants}
       initial="hidden"
       animate={useInView(sectionRef, { amount: 0.4 }) ? "show" : "hidden"}
-      className="flex flex-col items-center w-full z-10"
+      className="container mx-auto flex flex-col items-center w-full z-10"
     >
       {/* Título con animación solo cuando es visible */}
       {(() => {
         const ref = React.useRef<HTMLHeadingElement>(null);
         const inView = useInView(ref, { amount: 1 });
         return (
-          <motion.h2
-            ref={ref}
-            variants={fadeOpacity}
-            initial="hidden"
-            animate={inView ? "show" : "hidden"}
-            className="text-4xl font-bold mb-8 text-white/30 uppercase"
-          >
+          <Title heading className="self-start text-white/80 pb-10">
             Producción y calidad
-          </motion.h2>
+          </Title>
         );
       })()}
       {/* Cards con stagger: animan juntas cuando el contenedor es visible */}
@@ -150,7 +138,7 @@ const ProduccionSection: React.FC<ProduccionSectionProps> = ({
         variants={containerVariants}
         initial="hidden"
         animate={useInView(sectionRef, { amount: 0.4 }) ? "show" : "hidden"}
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl"
+        className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full"
       >
         {produccionCards.map((card, idx) => (
           <ProduccionCard
