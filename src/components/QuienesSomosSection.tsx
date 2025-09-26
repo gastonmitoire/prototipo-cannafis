@@ -32,7 +32,7 @@ const QuienesSomosSection: React.FC<QuienesSomosSectionProps> = ({
           : { opacity: 0, filter: "blur(8px)" }
       }
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="flex flex-col max-w-2xl h-full px-20 pt-52 mx-auto bg-black/30 backdrop-blur-md"
+      className="flex flex-col max-w-7xl h-full px-20 pt-52 mx-auto bg-black/30 backdrop-blur-md"
     >
       <motion.h2
         initial={{ opacity: 0, y: -32 }}
@@ -47,11 +47,11 @@ const QuienesSomosSection: React.FC<QuienesSomosSectionProps> = ({
           type: "spring",
           stiffness: 60,
         }}
-        className="text-4xl font-bold mb-8 text-white/30 uppercase"
+        className="max-w-4xl w-full mx-auto text-4xl font-bold mb-8 text-white/30 uppercase"
       >
         Quiénes somos
       </motion.h2>
-      <div className="space-y-4 [&>p]:text-xl [&>p]:text-blue-100/90 [&>p]:text-left [&>p]:font-thin">
+      <div className="max-w-3xl mx-auto space-y-4 [&>p]:text-2xl [&>p]:text-blue-100/90 [&>p]:text-justify [&>p]:font-thin">
         <motion.p
           initial={{ opacity: 0, x: -40 }}
           animate={
