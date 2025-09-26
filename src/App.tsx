@@ -162,7 +162,6 @@ function App() {
         <ImageWithZoomSection
           imageUrl="/images/backgrounds/grupo.jpg"
           alt="Placeholder image"
-          height={600}
         />
         <ProductosSection
           sectionRef={sectionRefs[5]}
@@ -173,7 +172,6 @@ function App() {
         <ImageWithZoomSection
           imageUrl="/images/backgrounds/rojo.jpg"
           alt="Placeholder image"
-          height={770}
         />
         <MercadosSection
           sectionRef={sectionRefs[6]}
@@ -183,7 +181,6 @@ function App() {
         <ImageWithZoomSection
           imageUrl="/images/backgrounds/luces.jpg"
           alt="Placeholder image"
-          height={770}
         />
         <ResponsabilidadSection
           sectionRef={sectionRefs[7]}
