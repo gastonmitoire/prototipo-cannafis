@@ -64,7 +64,7 @@ const MercadosSection: React.FC<MercadosSectionProps> = ({
     <section
       id="mercados"
       ref={sectionRef}
-      className="h-screen flex items-center justify-center bg-gradient-to-br from-slate-900/30 via-blue-950/70 to-slate-900/70 border-y border-blue-900/40 px-4"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900/30 via-blue-950/70 to-slate-900/70 border-y border-blue-900/40 px-4 py-20"
     >
       <div className="flex flex-col items-center w-full z-10">
         <div className="container w-full">
@@ -76,7 +76,7 @@ const MercadosSection: React.FC<MercadosSectionProps> = ({
           >
             Mercados y alianzas
           </Heading>
-          <div className="max-w-6xl grid grid-rows-3 gap-3 mt-6">
+          <div className="max-w-3xl 2xl:max-w-6xl grid grid-rows-3 gap-3 mt-6">
             {mercadosData.map((item, key) => (
               <MercadosCard key={key} text={item.text} fadeUp={fadeUp} />
             ))}
