@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView as useInViewLib } from "framer-motion";
+import Title from "./ui/title";
 // Componente animado para canal de distribución
 const CanalDistribucion: React.FC<{ text: string }> = ({ text }) => {
   const ref = useRef<HTMLParagraphElement | null>(null);
@@ -23,7 +24,7 @@ const CanalDistribucion: React.FC<{ text: string }> = ({ text }) => {
             }
           : { opacity: 0, x: 16 }
       }
-      className="text-right mt-4 text-white/70 italic flex-1 px-2 text-sm capitalize relative overflow-visible"
+      className="text-right mt-4 text-white/70 italic flex-1 px-2 text-3xl font-thin capitalize relative overflow-visible"
       style={{ borderTop: "3px solid transparent" }}
     >
       <motion.span
@@ -127,7 +128,7 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
     <section
       id="productos"
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center px-4 pb-20"
+      className="relative min-h-screen flex items-center justify-center px-4"
       style={{
         backgroundImage:
           'url("https://www.transparenttextures.com/patterns/' +
@@ -153,14 +154,7 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
         animate={inView ? "show" : "hidden"}
         className="flex flex-col items-center w-full z-10"
       >
-        <motion.h2
-          variants={fadeUp}
-          initial="hidden"
-          animate={inView ? "show" : "hidden"}
-          className="text-3xl font-bold mb-4 pt-20 pb-5 text-white/80 text-center"
-        >
-          Productos y formatos
-        </motion.h2>
+        <Title>Productos y formatos</Title>
         <div className="max-w-2xl w-full">
           <div className="text-white/80 space-y-2 grid grid-cols-2 gap-4">
             <ProductosCard>
@@ -233,11 +227,10 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
               </motion.p>
             </ProductosCard>
           </div>
-          <div>
-            <h3 className="text-xl font-bold text-center mt-8 mb-4 text-white/80">
-              Canales de distribución
-            </h3>
-            <div className="max-w-md mx-auto flex flex-wrap justify-center gap-2">
+          <div className="py-20 flex flex-col items-center">
+            <Title>Canales de distribución</Title>
+
+            <div className="max-w-2xl mx-auto flex flex-wrap justify-center gap-2">
               {[
                 "farmacias magistrales",
                 "laboratorios",
