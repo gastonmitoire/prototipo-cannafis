@@ -27,7 +27,9 @@ const ResponsabilidadSection: React.FC<ResponsabilidadSectionProps> = ({
     >
       <div className="container mx-auto h-screen flex items-center justify-center">
         <div className="flex flex-col w-full z-10">
-          <Title heading>Responsabilidad Social</Title>
+          <Title heading variant="left">
+            Responsabilidad Social
+          </Title>
           <p className="max-w-xl text-2xl font-thin text-white/90 py-10">
             {palabras.map((palabra, i) => (
               <motion.span
@@ -52,7 +54,7 @@ const ResponsabilidadSection: React.FC<ResponsabilidadSectionProps> = ({
             animate={inView ? "show" : "hidden"}
             className="mt-8 text-white/80 self-end"
           >
-            <Title>Contacto</Title>
+            <Title variant="right">Contacto</Title>
             <p>Ruta Nacional 36, Colonia Elisa, Chaco – Argentina</p>
             <p>+54 9 362 4758114</p>
             <p>comercialcannafis@gmail.com</p>
