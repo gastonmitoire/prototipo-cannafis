@@ -24,7 +24,7 @@ const CanalDistribucion: React.FC<{ text: string }> = ({ text }) => {
             }
           : { opacity: 0, x: 16 }
       }
-      className="text-white/70 w-max line-clamp-1 text-3xl font-medium italic capitalize relative overflow-visible"
+      className="text-white/70 w-max line-clamp-1 text-2xl 2xl:text-3xl font-medium italic capitalize relative overflow-visible"
       style={{ borderTop: "3px solid transparent" }}
     >
       <motion.span
@@ -104,7 +104,7 @@ const ProductosList = ({ items, inView }: ProductosListProps) => (
         <motion.div
           key={item}
           variants={liSlide}
-          className={`text-right text-3xl font-semibold pr-3 py-7 rounded-tr-2xl rounded-bl-2xl bg-gradient-to-l ${colorClass}`}
+          className={`text-right text-lg 2xl:text-3xl font-semibold p-1.5 2xl:pr-3 py-3.5 2xl:py-7 rounded-tr-2xl rounded-bl-2xl bg-gradient-to-l ${colorClass}`}
         >
           {item}
         </motion.div>
@@ -148,7 +148,7 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
       >
         Cambiar fondo
       </button>
-      <div className="container mx-auto grid grid-cols-5 gap-5 pt-20">
+      <div className="container mx-auto grid grid-cols-5 gap-5 pt-10 2xl:pt-20">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -185,7 +185,7 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
                         }
                       : { opacity: 0, x: 16 }
                   }
-                  className="text-xl font-thin italic mt-7"
+                  className="text-sm 2xl:text-xl font-thin italic mt-7"
                 >
                   Presentaciones adaptables a requerimientos de cada laboratorio
                   o institución

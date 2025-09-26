@@ -43,6 +43,7 @@ const PresentacionSection: React.FC<PresentacionSectionProps> = ({
       <motion.div className="grid grid-cols-2">
         {/* Lado izquierdo: títulos, entran desde la derecha */}
         <motion.div
+          className="space-y-1.5 2xl:space-y-3"
           initial="hidden"
           whileInView="visible"
           exit="hidden"
@@ -62,7 +63,7 @@ const PresentacionSection: React.FC<PresentacionSectionProps> = ({
           }}
         >
           <motion.h2
-            className="text-6xl font-bold mb-4 text-blue-400 text-right"
+            className="max-w-[60%] 2xl:max-w-full text-3xl 2xl:text-6xl place-self-end font-bold text-blue-400 text-right"
             initial="hidden"
             whileInView="visible"
             exit="hidden"
@@ -79,7 +80,7 @@ const PresentacionSection: React.FC<PresentacionSectionProps> = ({
             La primera empresa argentina
           </motion.h2>
           <motion.h2
-            className="text-6xl font-bold mb-4 text-white/80 text-right"
+            className="max-w-[60%] 2xl:max-w-full text-3xl 2xl:text-6xl place-self-end font-bold text-white/80 text-right"
             initial="hidden"
             whileInView="visible"
             exit="hidden"
@@ -98,6 +99,7 @@ const PresentacionSection: React.FC<PresentacionSectionProps> = ({
         </motion.div>
         {/* Lado derecho: párrafos, entran desde la izquierda */}
         <motion.div
+          className="max-w-xs 2xl:max-w-full grid space-y-1.5 2xl:space-y-3 p-3 2xl:p-5"
           initial="hidden"
           whileInView="visible"
           exit="hidden"
@@ -117,7 +119,7 @@ const PresentacionSection: React.FC<PresentacionSectionProps> = ({
           }}
         >
           <motion.p
-            className="text-2xl text-white/80 text-left p-5"
+            className="text-md 2xl:text-2xl text-white/80 text-left leading-tight"
             initial="hidden"
             whileInView="visible"
             exit="hidden"
@@ -135,7 +137,7 @@ const PresentacionSection: React.FC<PresentacionSectionProps> = ({
             Activos (IFA) a base de Cannabis sativa.
           </motion.p>
           <motion.p
-            className="text-2xl text-white/80 text-left p-5"
+            className="text-md 2xl:text-2xl text-white/80 text-left leading-tight"
             style={{ marginTop: "-1rem" }}
             initial="hidden"
             whileInView="visible"
