@@ -19,7 +19,14 @@ const MercadosCard: React.FC<MercadosCardProps> = ({ text, icon }) => {
   const inView = useInViewLib(ref, { amount: 0.5, once: false });
   return (
     <motion.div ref={ref} className="relative py-3 text-white/90">
-      <Heading expand className="text-right mt-3" variant="right">
+      <Heading
+        expand
+        className="text-right mt-3"
+        animation={{
+          direction: "right",
+          transition: { duration: 1.02, delay: 0.33 },
+        }}
+      >
         {text}
       </Heading>
       <motion.span
