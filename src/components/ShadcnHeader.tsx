@@ -16,7 +16,6 @@ const ShadcnHeader: React.FC<ShadcnHeaderProps> = ({
     <header className="fixed top-0 w-full z-50 px-8 py-4 bg-slate-900 backdrop-blur-2xl transition-all duration-500 opacity-100 pointer-events-auto">
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center gap-4 select-none">
-          <img src="/vite.svg" alt="Logo" className="w-12 h-12" />
           <span className="text-2xl font-extrabold tracking-widest text-white/80">
             CannaFIS
           </span>

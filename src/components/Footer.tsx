@@ -64,7 +64,7 @@ const Footer: React.FC = () => (
       {/* Creador */}
       <div className="self-center flex-1 flex flex-col items-center md:items-end">
         <a
-          href="https://gastonmitoire.com.ar"
+          href="#"
           target="_blank"
           rel="noopener noreferrer"
           className="text-cyan-400 hover:underline text-sm font-semibold"

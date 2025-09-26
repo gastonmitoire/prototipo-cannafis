@@ -40,7 +40,7 @@ const FuturistMenu: React.FC<FuturistMenuProps> = ({
                   .getElementById(id)
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
-              className={`group-hover:text-blue-500 transition-all duration-200 ${
+              className={`block group-hover:text-blue-500 transition-all duration-200 ${
                 index % 2 === 0 ? "group-hover:pl-2" : "group-hover:pr-2"
               }`}
             >
