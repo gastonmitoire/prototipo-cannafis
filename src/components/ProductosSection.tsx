@@ -24,7 +24,7 @@ const CanalDistribucion: React.FC<{ text: string }> = ({ text }) => {
             }
           : { opacity: 0, x: 16 }
       }
-      className="text-right mt-4 text-white/70 flex-1 px-2 text-3xl font-medium italic capitalize relative overflow-visible"
+      className="text-white/70 w-max line-clamp-1 text-3xl font-medium italic capitalize relative overflow-visible"
       style={{ borderTop: "3px solid transparent" }}
     >
       <motion.span
@@ -49,7 +49,7 @@ interface ProductosSectionProps {
 }
 
 const ProductosCard = ({ children }: { children: React.ReactNode }) => (
-  <div className="h-full text-left text-lg p-10 bg-black/30 rounded-lg">
+  <div className="h-full w-full text-right text-lg p-10 bg-black/30 backdrop-blur-sm">
     {children}
   </div>
 );
@@ -85,8 +85,8 @@ interface ProductosListProps {
 }
 
 const ProductosList = ({ items, inView }: ProductosListProps) => (
-  <motion.ul
-    className="py-7 space-y-1.5"
+  <motion.div
+    className="py-7 space-y-1.5 grid grid-cols-4 gap-5"
     variants={listStagger}
     initial="hidden"
     animate={inView ? "show" : "hidden"}
@@ -101,16 +101,16 @@ const ProductosList = ({ items, inView }: ProductosListProps) => (
           ? "from-purple-900/90 to-purple-100/10"
           : "from-pink-700/90 to-orange-100/10";
       return (
-        <motion.li
+        <motion.div
           key={item}
           variants={liSlide}
-          className={`text-right text-3xl font-semibold pr-3 py-1.5 rounded-tr-2xl rounded-bl-2xl bg-gradient-to-l ${colorClass}`}
+          className={`text-right text-3xl font-semibold pr-3 py-7 rounded-tr-2xl rounded-bl-2xl bg-gradient-to-l ${colorClass}`}
         >
           {item}
-        </motion.li>
+        </motion.div>
       );
     })}
-  </motion.ul>
+  </motion.div>
 );
 
 const ProductosSection: React.FC<ProductosSectionProps> = ({
@@ -127,7 +127,7 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
     <section
       id="productos"
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center px-4 pb-16"
+      className="relative h-screen -z-10"
       style={{
         backgroundImage:
           'url("https://www.transparenttextures.com/patterns/' +
@@ -137,7 +137,7 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
         backgroundAttachment: "fixed",
       }}
     >
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-transparent backdrop-blur-xs z-0" />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-transparent backdrop-blur-xs -z-10" />
       <button
         onClick={() =>
           setBackgroundStyle((prev) =>
@@ -148,102 +148,68 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
       >
         Cambiar fondo
       </button>
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate={inView ? "show" : "hidden"}
-        className="flex flex-col items-center w-full pt-32 z-10"
-      >
-        <Heading>Productos y formatos</Heading>
-        <div className="w-full">
-          <div className="max-w-2xl mx-auto text-white/80 space-y-2 grid grid-cols-2 gap-4">
-            <ProductosCard>
-              <motion.p
-                initial={{ opacity: 0, x: 16 }}
-                animate={
-                  inView
-                    ? {
-                        opacity: 1,
-                        x: 0,
-                        transition: {
-                          type: "spring" as const,
-                          stiffness: 320,
-                          damping: 28,
-                          mass: 0.7,
-                        },
-                      }
-                    : { opacity: 0, x: 16 }
-                }
-                className="text-4xl uppercase font-semibold text-right"
-              >
-                Frascos y bolsas
-              </motion.p>
-              <ProductosList
-                items={["20g", "40g", "100g", "500g"]}
-                inView={inView}
-              />
-            </ProductosCard>
-            <ProductosCard>
-              <motion.p
-                initial={{ opacity: 0, x: -16 }}
-                animate={
-                  inView
-                    ? {
-                        opacity: 1,
-                        x: 0,
-                        transition: {
-                          type: "spring" as const,
-                          stiffness: 320,
-                          damping: 28,
-                          mass: 0.7,
-                        },
-                      }
-                    : { opacity: 0, x: -16 }
-                }
-                className="text-4xl uppercase font-semibold text-left"
-              >
-                Cápsulas y comprimidos
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, x: 16 }}
-                animate={
-                  inView
-                    ? {
-                        opacity: 1,
-                        x: 0,
-                        transition: {
-                          type: "spring" as const,
-                          stiffness: 320,
-                          damping: 28,
-                          mass: 0.7,
-                        },
-                      }
-                    : { opacity: 0, x: 16 }
-                }
-                className="text-xl font-thin italic mt-7"
-              >
-                Presentaciones adaptables a requerimientos de cada laboratorio o
-                institución
-              </motion.p>
-            </ProductosCard>
-          </div>
-          <div className="py-20 flex flex-col items-center">
-            <Heading>Canales de distribución</Heading>
-
-            <div className="max-w-2xl w-full mx-auto flex flex-col justify-center gap-10 p-6">
-              {[
-                "farmacias magistrales",
-                "laboratorios",
-                "instituciones de salud",
-                "exportación a mercados regulados",
-                "convenios con ONGs bajo Reprocann.",
-              ].map((text) => (
-                <CanalDistribucion key={text} text={text} />
-              ))}
+      <div className="container mx-auto grid grid-cols-5 gap-5 pt-20">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "show" : "hidden"}
+          className="col-span-3 flex flex-col w-full"
+        >
+          <Heading className="self-end text-white/80">
+            Productos y formatos
+          </Heading>
+          <div className="w-full">
+            <div className="mx-auto text-white/80 space-y-2 gap-4">
+              <ProductosCard>
+                <Heading expand>Frascos y bolsas</Heading>
+                <ProductosList
+                  items={["20g", "40g", "100g", "500g"]}
+                  inView={inView}
+                />
+              </ProductosCard>
+              <ProductosCard>
+                <Heading expand>Cápsulas y comprimidos</Heading>
+                <motion.p
+                  initial={{ opacity: 0, x: 16 }}
+                  animate={
+                    inView
+                      ? {
+                          opacity: 1,
+                          x: 0,
+                          transition: {
+                            type: "spring" as const,
+                            stiffness: 320,
+                            damping: 28,
+                            mass: 0.7,
+                          },
+                        }
+                      : { opacity: 0, x: 16 }
+                  }
+                  className="text-xl font-thin italic mt-7"
+                >
+                  Presentaciones adaptables a requerimientos de cada laboratorio
+                  o institución
+                </motion.p>
+              </ProductosCard>
             </div>
           </div>
+        </motion.div>
+        <div className="col-span-2">
+          <Heading>Canales de distribución</Heading>
+
+          <div className="max-w-2xl w-full mx-auto flex flex-col justify-center gap-10">
+            {[
+              "farmacias magistrales",
+              "laboratorios",
+              "instituciones de salud",
+              "exportación a mercados regulados",
+              "convenios con ONGs bajo Reprocann.",
+            ].map((text) => (
+              <CanalDistribucion key={text} text={text} />
+            ))}
+          </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };
