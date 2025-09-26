@@ -65,7 +65,7 @@ const ResponsabilidadSection: React.FC<ResponsabilidadSectionProps> = ({
         <div className="flex flex-col items-end w-full z-10">
           <Heading
             expand
-            className="text-right mt-3 text-white/80"
+            className="text-right text-white/80"
             animation={{
               direction: "right",
               transition: { duration: 1.02, delay: 0.33 },
@@ -73,7 +73,7 @@ const ResponsabilidadSection: React.FC<ResponsabilidadSectionProps> = ({
           >
             Responsabilidad Social
           </Heading>
-          <p className="max-w-xl text-3xl text-right font-thin text-white/90 py-10">
+          <p className="max-w-md 2xl:max-w-xl 2xl:text-3xl text-right font-thin text-white/90 py-5 2xl:py-10">
             {palabras.map((palabra, i) => (
               <motion.span
                 key={i}

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
+import { Button } from "./button";
 
 const ContactoStepper = ({ inView }: { inView: boolean }) => {
   const [step, setStep] = React.useState({
@@ -40,7 +41,7 @@ const ContactoStepper = ({ inView }: { inView: boolean }) => {
         <input
           type="text"
           placeholder="Nombre"
-          className="w-full mb-4 p-2 rounded-md bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/30 transition"
+          className="w-full mb-4 p-1.5 2xl:p-2 rounded-md text-sm bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/30 transition"
           autoFocus={inView}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
@@ -79,7 +80,7 @@ const ContactoStepper = ({ inView }: { inView: boolean }) => {
       </div>
       <div className="flex justify-between">
         {step.hasPrev ? (
-          <button
+          <Button
             onClick={prevStep}
             disabled={!step.hasPrev}
             className={`px-4 py-2 rounded-md text-sm font-medium ${
@@ -89,14 +90,14 @@ const ContactoStepper = ({ inView }: { inView: boolean }) => {
             }`}
           >
             Anterior
-          </button>
+          </Button>
         ) : (
           <div></div>
         )}
         <div className="flex space-x-2">
           {step.hasNext ? (
             <div className="flex items-center space-x-3">
-              <button
+              <Button
                 onClick={nextStep}
                 disabled={!step.hasNext}
                 className={`px-4 py-2 rounded-md text-sm font-medium ${
@@ -111,7 +112,7 @@ const ContactoStepper = ({ inView }: { inView: boolean }) => {
                 }}
               >
                 Continuar
-              </button>
+              </Button>
               {inView && (
                 <p className="text-xs text-white/50">
                   Enter
@@ -133,12 +134,12 @@ const ContactoStepper = ({ inView }: { inView: boolean }) => {
               )}
             </div>
           ) : (
-            <button
+            <Button
               onClick={() => alert("Formulario enviado!")}
               className="px-4 py-2 rounded-md text-sm font-medium bg-white/30 text-white hover:bg-white/40"
             >
               Enviar
-            </button>
+            </Button>
           )}
         </div>
       </div>
