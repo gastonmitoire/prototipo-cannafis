@@ -14,7 +14,7 @@ const sections = [
 
 const Footer: React.FC = () => (
   <footer className="w-full bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white/80 py-10 px-4 border-t border-blue-900/40">
-    <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+    <div className="container mx-auto flex flex-col md:flex-row justify-between items-start gap-8">
       {/* Mapa del sitio */}
       <nav className="flex-1 mb-6 md:mb-0">
         <h4 className="font-bold text-lg mb-2 text-blue-300">Mapa del sitio</h4>
@@ -62,17 +62,18 @@ const Footer: React.FC = () => (
         </div>
       </div>
       {/* Creador */}
-      <div className="flex-1 flex flex-col items-center md:items-end">
-        <span className="text-xs text-blue-200 mb-1">
-          Sitio desarrollado por
-        </span>
+      <div className="self-center flex-1 flex flex-col items-center md:items-end">
         <a
           href="https://gastonmitoire.com.ar"
           target="_blank"
           rel="noopener noreferrer"
           className="text-cyan-400 hover:underline text-sm font-semibold"
         >
-          Gastón Mitoire
+          <img
+            src="/images/extras/yaguaretech-iso.svg"
+            alt="Logo de Gastón Mitoire"
+            className="w-5"
+          />
         </a>
       </div>
     </div>
