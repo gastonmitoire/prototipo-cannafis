@@ -14,7 +14,7 @@ const sections = [
 
 const Footer: React.FC = () => (
   <footer className="w-full bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white/80 py-10 px-4 border-t border-blue-900/40">
-    <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+    <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
       {/* Mapa del sitio */}
       <nav className="flex-1 mb-6 md:mb-0">
         <h4 className="font-bold text-lg mb-2 text-blue-300">Mapa del sitio</h4>
