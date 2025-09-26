@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView as useInViewLib } from "framer-motion";
-import Title from "./ui/title";
+import { Title } from "./ui/title";
 // Componente animado para canal de distribución
 const CanalDistribucion: React.FC<{ text: string }> = ({ text }) => {
   const ref = useRef<HTMLParagraphElement | null>(null);

@@ -1,8 +1,6 @@
 import React from "react";
 import { motion, useInView } from "framer-motion";
 
-import Title from "./ui/title";
-
 interface ProduccionSectionProps {
   sectionRef: React.RefObject<HTMLElement | null>;
   containerVariants: any;
@@ -41,7 +39,9 @@ const ProduccionCard: React.FC<ProduccionCardProps> = ({
       >
         {icon}
       </motion.span>
-      <Title>{title}</Title>
+      <h5 className="text-lg md:text-xl font-bold tracking-tight mb-2 uppercase">
+        {title}
+      </h5>
       <motion.span
         className="text-white/50 text-center"
         initial={{ opacity: 0, x: 10 }}
@@ -127,9 +127,9 @@ const ProduccionSection: React.FC<ProduccionSectionProps> = ({
       {/* Título con animación solo cuando es visible */}
       {(() => {
         return (
-          <Title heading className="self-start text-white/80 pb-10">
+          <h3 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-6 uppercase">
             Producción y calidad
-          </Title>
+          </h3>
         );
       })()}
       {/* Cards con stagger: animan juntas cuando el contenedor es visible */}

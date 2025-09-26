@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Title from "./ui/title";
 import { ContactoStepper } from "./ui/stepper";
+import { Title } from "./ui/title";
 interface ResponsabilidadSectionProps {
   sectionRef: React.RefObject<HTMLElement | null>;
   containerVariants: any;

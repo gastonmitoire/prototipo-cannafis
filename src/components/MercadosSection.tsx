@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { useInView as useInViewLib } from "framer-motion";
-import Title from "./ui/title";
+import { Title } from "./ui/title";
 interface MercadosSectionProps {
   sectionRef: React.RefObject<HTMLElement | null>;
   fadeUp: any;
