@@ -18,39 +18,21 @@ const MercadosCard: React.FC<MercadosCardProps> = ({ text, icon }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useInViewLib(ref, { amount: 0.5, once: false });
   return (
-    <div
-      ref={ref}
-      className="bg-black/30 backdrop-blur-xl rounded-lg px-6 py-32 text-white/90 mb-4 shadow-lg flex flex-col items-center"
-    >
-      {icon && (
-        <motion.span
-          initial={{ opacity: 0, y: 32, scale: 0.7 }}
-          animate={
-            inView
-              ? { opacity: 1, y: 0, scale: 1 }
-              : { opacity: 0, y: 32, scale: 0.7 }
-          }
-          transition={{
-            type: "spring",
-            stiffness: 340,
-            damping: 18,
-            mass: 0.7,
-            delay: 0.05,
-          }}
-          className="mb-5 text-5xl drop-shadow"
-        >
-          {icon}
-        </motion.span>
-      )}
-      <motion.span
-        initial={{ opacity: 0, y: 18 }}
-        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
-        transition={{ duration: 0.48, delay: 0.13, ease: [0.22, 1, 0.36, 1] }}
-        className="block text-center text-3xl font-thin"
-      >
+    <motion.div ref={ref} className="relative py-3 text-white/90">
+      <Heading expand className="text-right mt-3" variant="right">
         {text}
-      </motion.span>
-    </div>
+      </Heading>
+      <motion.span
+        initial={{ width: 0 }}
+        animate={
+          inView
+            ? { width: "100%", transition: { duration: 1.22, delay: 0.13 } }
+            : { width: 0 }
+        }
+        className="absolute left-0 top-0 h-0.5 bg-white/20 rounded-full"
+        style={{ borderRadius: 2, height: 1.5, background: "#ffffff33" }}
+      />
+    </motion.div>
   );
 };
 
@@ -82,7 +64,7 @@ const MercadosSection: React.FC<MercadosSectionProps> = ({
       <div className="flex flex-col items-center w-full z-10">
         <div className="container w-full">
           <Heading>Mercados y alianzas</Heading>
-          <div className="grid grid-cols-3 gap-3 mt-6">
+          <div className="max-w-6xl grid grid-rows-3 gap-3 mt-6">
             {mercadosData.map((item, key) => (
               <MercadosCard
                 key={key}
