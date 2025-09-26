@@ -66,6 +66,7 @@ import React from "react";
 import { motion, useInView } from "framer-motion";
 
 import type { Variants } from "framer-motion";
+import { Heading } from "./ui/heading";
 
 const cardVariants: Variants = {
   hidden: { opacity: 0, scale: 0.95, y: 32 },
@@ -167,11 +168,9 @@ const CertificacionesSection: React.FC<CertificacionesSectionProps> = ({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, type: "spring" }}
-          className="w-full"
+          className="w-full pt-10"
         >
-          <h5 className="text-lg md:text-xl font-bold tracking-tight mb-2 uppercase">
-            Certificaciones
-          </h5>
+          <Heading className="text-center mx-auto">Certificaciones</Heading>
           {/* Cards de certificación grandes y reutilizables */}
           <motion.div
             className="grid grid-cols-1 sm:grid-cols-2 gap-8 my-8 w-full max-w-3xl mx-auto"
