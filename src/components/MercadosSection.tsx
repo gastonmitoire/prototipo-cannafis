@@ -70,7 +70,14 @@ const MercadosSection: React.FC<MercadosSectionProps> = ({
     >
       <div className="flex flex-col items-center w-full z-10">
         <div className="container w-full">
-          <Heading>Mercados y alianzas</Heading>
+          <Heading
+            animation={{
+              direction: "bottom",
+              transition: { duration: 1.32, delay: 0.13 },
+            }}
+          >
+            Mercados y alianzas
+          </Heading>
           <div className="max-w-6xl grid grid-rows-3 gap-3 mt-6">
             {mercadosData.map((item, key) => (
               <MercadosCard
