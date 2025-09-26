@@ -63,7 +63,14 @@ const ResponsabilidadSection: React.FC<ResponsabilidadSectionProps> = ({
     >
       <div className="container mx-auto h-screen grid grid-cols-1 md:grid-cols-2 place-items-center">
         <div className="flex flex-col items-end w-full z-10">
-          <Heading expand variant="left">
+          <Heading
+            expand
+            className="text-right mt-3 text-white/80"
+            animation={{
+              direction: "right",
+              transition: { duration: 1.02, delay: 0.33 },
+            }}
+          >
             Responsabilidad Social
           </Heading>
           <p className="max-w-xl text-3xl text-right font-thin text-white/90 py-10">

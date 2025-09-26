@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { useInView as useInViewLib } from "framer-motion";
 import { Heading } from "./ui/heading";
@@ -11,10 +10,9 @@ interface MercadosSectionProps {
 type MercadosCardProps = {
   text: string;
   fadeUp: any;
-  icon?: ReactNode;
 };
 
-const MercadosCard: React.FC<MercadosCardProps> = ({ text, icon }) => {
+const MercadosCard: React.FC<MercadosCardProps> = ({ text }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useInViewLib(ref, { amount: 0.5, once: false });
   return (
@@ -80,12 +78,7 @@ const MercadosSection: React.FC<MercadosSectionProps> = ({
           </Heading>
           <div className="max-w-6xl grid grid-rows-3 gap-3 mt-6">
             {mercadosData.map((item, key) => (
-              <MercadosCard
-                key={key}
-                text={item.text}
-                fadeUp={fadeUp}
-                icon={item.icon}
-              />
+              <MercadosCard key={key} text={item.text} fadeUp={fadeUp} />
             ))}
           </div>
         </div>
