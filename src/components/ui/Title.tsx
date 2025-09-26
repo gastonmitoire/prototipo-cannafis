@@ -19,8 +19,8 @@ const Title: React.FC<TitleProps> = ({
   const ref = useRef<HTMLHeadingElement>(null);
   const inView = useInView(ref, { amount: 0.5 });
   const base = heading
-    ? "text-5xl md:text-6xl font-extrabold tracking-tight text-white/80 mb-6 uppercase"
-    : "text-lg md:text-xl font-bold tracking-tight text-white/80 mb-2 uppercase";
+    ? "text-5xl md:text-6xl font-extrabold tracking-tight mb-6 uppercase"
+    : "text-lg md:text-xl font-bold tracking-tight mb-2 uppercase";
 
   // Definir animación según variant
   let initial: any = { opacity: 0 };
@@ -50,7 +50,7 @@ const Title: React.FC<TitleProps> = ({
   return (
     <motion.h2
       ref={ref}
-      className={`${base} ${className}`}
+      className={`${base} ${className ? className : "text-white/80"}`}
       initial={initial}
       animate={inView ? animate : initial}
       transition={{ duration: 0.7, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
