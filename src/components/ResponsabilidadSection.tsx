@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ContactoStepper } from "./ui/stepper";
-import { Title } from "./ui/title";
+import { Heading } from "./ui/heading";
 interface ResponsabilidadSectionProps {
   sectionRef: React.RefObject<HTMLElement | null>;
   containerVariants: any;
@@ -35,7 +35,7 @@ const Contacto = ({ inView }: { inView: boolean }) => {
 
   return (
     <div className="mt-8 text-white/80 self-end text-right">
-      <Title variant="right">Contacto</Title>
+      <Heading>Contacto</Heading>
 
       <div className="text-sm md:text-base">
         {contactInfoData.map((info, index) => (
@@ -63,9 +63,9 @@ const ResponsabilidadSection: React.FC<ResponsabilidadSectionProps> = ({
     >
       <div className="container mx-auto h-screen grid grid-cols-1 md:grid-cols-2 place-items-center">
         <div className="flex flex-col items-end w-full z-10">
-          <Title heading variant="left">
+          <Heading expand variant="left">
             Responsabilidad Social
-          </Title>
+          </Heading>
           <p className="max-w-xl text-3xl text-right font-thin text-white/90 py-10">
             {palabras.map((palabra, i) => (
               <motion.span

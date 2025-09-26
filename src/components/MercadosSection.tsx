@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { useInView as useInViewLib } from "framer-motion";
-import { Title } from "./ui/title";
+import { Heading } from "./ui/heading";
 interface MercadosSectionProps {
   sectionRef: React.RefObject<HTMLElement | null>;
   fadeUp: any;
@@ -81,7 +81,7 @@ const MercadosSection: React.FC<MercadosSectionProps> = ({
     >
       <div className="flex flex-col items-center w-full z-10">
         <div className="container w-full">
-          <Title>Mercados y alianzas</Title>
+          <Heading>Mercados y alianzas</Heading>
           <div className="grid grid-cols-3 gap-3 mt-6">
             {mercadosData.map((item, key) => (
               <MercadosCard

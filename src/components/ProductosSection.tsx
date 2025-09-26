@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView as useInViewLib } from "framer-motion";
-import { Title } from "./ui/title";
+import { Heading } from "./ui/heading";
 // Componente animado para canal de distribución
 const CanalDistribucion: React.FC<{ text: string }> = ({ text }) => {
   const ref = useRef<HTMLParagraphElement | null>(null);
@@ -153,7 +153,7 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
         animate={inView ? "show" : "hidden"}
         className="flex flex-col items-center w-full z-10"
       >
-        <Title>Productos y formatos</Title>
+        <Heading>Productos y formatos</Heading>
         <div className="max-w-2xl w-full">
           <div className="text-white/80 space-y-2 grid grid-cols-2 gap-4">
             <ProductosCard>
@@ -227,7 +227,7 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
             </ProductosCard>
           </div>
           <div className="py-20 flex flex-col items-center">
-            <Title>Canales de distribución</Title>
+            <Heading>Canales de distribución</Heading>
 
             <div className="max-w-2xl mx-auto flex flex-wrap justify-center gap-2">
               {[
