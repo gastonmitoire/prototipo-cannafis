@@ -24,14 +24,14 @@ const CanalDistribucion: React.FC<{ text: string }> = ({ text }) => {
             }
           : { opacity: 0, x: 16 }
       }
-      className="text-right mt-4 text-white/70 italic flex-1 px-2 text-3xl font-thin capitalize relative overflow-visible"
+      className="text-right mt-4 text-white/70 flex-1 px-2 text-3xl font-medium italic capitalize relative overflow-visible"
       style={{ borderTop: "3px solid transparent" }}
     >
       <motion.span
         initial={{ width: 0 }}
         animate={
           inView
-            ? { width: "100%", transition: { duration: 0.22, delay: 0.03 } }
+            ? { width: "100%", transition: { duration: 1.02, delay: 0.03 } }
             : { width: 0 }
         }
         className="absolute left-0 top-0 h-0.5 bg-white/20 rounded-full"
@@ -127,7 +127,7 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
     <section
       id="productos"
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center px-4"
+      className="relative min-h-screen flex items-center justify-center px-4 pb-16"
       style={{
         backgroundImage:
           'url("https://www.transparenttextures.com/patterns/' +
@@ -137,6 +137,7 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
         backgroundAttachment: "fixed",
       }}
     >
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-transparent backdrop-blur-xs z-0" />
       <button
         onClick={() =>
           setBackgroundStyle((prev) =>
@@ -151,11 +152,11 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
         variants={containerVariants}
         initial="hidden"
         animate={inView ? "show" : "hidden"}
-        className="flex flex-col items-center w-full z-10"
+        className="flex flex-col items-center w-full pt-32 z-10"
       >
         <Heading>Productos y formatos</Heading>
-        <div className="max-w-2xl w-full">
-          <div className="text-white/80 space-y-2 grid grid-cols-2 gap-4">
+        <div className="w-full">
+          <div className="max-w-2xl mx-auto text-white/80 space-y-2 grid grid-cols-2 gap-4">
             <ProductosCard>
               <motion.p
                 initial={{ opacity: 0, x: 16 }}
@@ -229,7 +230,7 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
           <div className="py-20 flex flex-col items-center">
             <Heading>Canales de distribución</Heading>
 
-            <div className="max-w-2xl mx-auto flex flex-wrap justify-center gap-2">
+            <div className="max-w-2xl w-full mx-auto flex flex-col justify-center gap-10 p-6">
               {[
                 "farmacias magistrales",
                 "laboratorios",
