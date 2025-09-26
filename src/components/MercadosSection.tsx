@@ -72,9 +72,7 @@ const mercadosData = [
 const MercadosSection: React.FC<MercadosSectionProps> = ({
   sectionRef,
   fadeUp,
-  useInView,
 }) => {
-  const inView = useInView(sectionRef, { amount: 0.4 });
   return (
     <section
       id="mercados"

@@ -51,7 +51,6 @@ const Contacto = ({ inView }: { inView: boolean }) => {
 const ResponsabilidadSection: React.FC<ResponsabilidadSectionProps> = ({
   sectionRef,
   // containerVariants,
-  fadeUp,
   useInView,
 }) => {
   const inView = useInView(sectionRef, { amount: 0.4 });

@@ -1,6 +1,8 @@
 import React from "react";
 import { motion, useInView } from "framer-motion";
+
 import Title from "./ui/title";
+
 interface ProduccionSectionProps {
   sectionRef: React.RefObject<HTMLElement | null>;
   containerVariants: any;
@@ -124,8 +126,6 @@ const ProduccionSection: React.FC<ProduccionSectionProps> = ({
     >
       {/* Título con animación solo cuando es visible */}
       {(() => {
-        const ref = React.useRef<HTMLHeadingElement>(null);
-        const inView = useInView(ref, { amount: 1 });
         return (
           <Title heading className="self-start text-white/80 pb-10">
             Producción y calidad

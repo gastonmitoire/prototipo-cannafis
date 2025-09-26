@@ -116,7 +116,6 @@ const ProductosList = ({ items, inView }: ProductosListProps) => (
 const ProductosSection: React.FC<ProductosSectionProps> = ({
   sectionRef,
   containerVariants,
-  fadeUp,
   useInView,
 }) => {
   const inView = useInView(sectionRef, { amount: 0.4 });
