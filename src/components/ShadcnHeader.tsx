@@ -6,6 +6,16 @@ interface ShadcnHeaderProps {
   setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+const Logo = ({}) => {
+  return (
+    <img
+      src="/images/brand/logo/cannafis-malachite.svg"
+      alt="Description of the image"
+      className="h-full w-auto min-w-32"
+    />
+  );
+};
+
 const ShadcnHeader: React.FC<ShadcnHeaderProps> = ({
   showHeader,
   menuOpen,
@@ -13,12 +23,10 @@ const ShadcnHeader: React.FC<ShadcnHeaderProps> = ({
 }) => {
   if (!showHeader) return null;
   return (
-    <header className="fixed top-0 w-full h-20 z-50 bg-slate-900 backdrop-blur-2xl transition-all duration-500">
+    <header className="fixed top-0 w-full h-20 z-50 bg-midnight backdrop-blur-2xl transition-all duration-500">
       <div className="flex items-center justify-between h-full px-8">
         <div className="flex items-center gap-4 select-none">
-          <span className="text-2xl font-extrabold tracking-widest text-white/80">
-            CannaFIS
-          </span>
+          <Logo />
         </div>
         <div className="flex items-center h-full">
           <button
