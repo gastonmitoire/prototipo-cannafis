@@ -2,26 +2,6 @@
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {
-      fontFamily: {
-        sans: ["'Neue Haas Grotesk Display Pro'", "sans-serif"],
-      },
-      colors: {
-        // Paleta funcional
-        background: "#001F3E", // Midnight Blue
-        foreground: "#E9EAE1", // Pearl
-        primary: "#05D16E", // Malachite
-        secondary: "#00804C", // Leaf Green
-        accent: "#1E4990", // Nuit
-
-        // Paleta de marca (opcional si querés usar por nombre también)
-        midnight: "#001F3E",
-        malachite: "#05D16E",
-        pearl: "#E9EAE1",
-        nuit: "#1E4990",
-        "leaf-green": "#00804C",
-      },
-    },
     container: {
       center: true,
       padding: "32px",
@@ -30,9 +10,9 @@ module.exports = {
         md: "768px",
         lg: "1024px",
         xl: "1280px",
-        "2xl": "1536px", // ligeramente más amplio
+        "2xl": "1536px",
       },
     },
   },
-  plugins: [],
+  plugins: ["tw-animate-css"],
 };

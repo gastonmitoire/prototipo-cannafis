@@ -1,8 +1,25 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+/* Configuración global de Tailwind v4 */
+@theme {
+  /* Colores */
+  --color-background: #001f3e; /* Midnight Blue */
+  --color-midnight: #001f3e;
+  --color-foreground: #e9eae1; /* Pearl */
+  --color-pearl: #e9eae1;
+  --color-primary: #05d16e; /* Malachite */
+  --color-malachite: #05d16e;
+  --color-secondary: #00804c; /* Leaf Green */
+  --color-leaf-green: #00804c;
+  --color-accent: #1e4990; /* Nuit */
+  --color-nuit: #1e4990;
 
+  /* Fuente */
+  --font-sans: "Neue Haas Grotesk Display Pro", sans-serif;
+}
+
+/* Aplicar fuente globalmente */
 body {
-  font-family: "Neue Haas Grotesk Display Pro", sans-serif;
+  font-family: var(--font-sans);
 }
