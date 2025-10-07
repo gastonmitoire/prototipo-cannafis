@@ -13,17 +13,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   containerVariants,
   useInView,
 }) => {
-  const [showLogo, setShowLogo] = useState(false);
   const isInView = useInView(sectionRef, { amount: 0.4 });
-
-  // activar/desactivar visibilidad según scroll
-  useEffect(() => {
-    if (isInView) {
-      setShowLogo(true);
-    } else {
-      setShowLogo(false);
-    }
-  }, [isInView]);
 
   return (
     <section
@@ -52,7 +42,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         className="flex flex-col items-center justify-center w-full z-10"
       >
         <motion.div
-          className="min-w-2xl"
+          className="min-w-3xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: isInView ? 1 : 0 }}
           transition={{ duration: 0.2 }}
