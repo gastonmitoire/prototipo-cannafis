@@ -7,8 +7,11 @@ export default function LogoAnimation() {
   useEffect(() => {
     if (!svgRef.current) return;
 
-    const paths = svgRef.current.querySelectorAll<SVGPathElement>("path");
+    const paths = Array.from(
+      svgRef.current.querySelectorAll<SVGPathElement>("path")
+    );
 
+    // Inicializar strokes y fill
     paths.forEach((path) => {
       const length = path.getTotalLength();
       path.style.strokeDasharray = `${length}`;
@@ -18,32 +21,32 @@ export default function LogoAnimation() {
 
     const tl = gsap.timeline({ defaults: { ease: "power1.inOut" } });
 
+    // Fase 1: strokes en paralelo
     tl.to(paths, {
       strokeDashoffset: 0,
-      duration: 0.8, // más rápido
-      stagger: { each: 0.08, from: "random" }, // menos delay entre paths
+      duration: 0.8,
+      stagger: { each: 0.01, from: "random" }, // prácticamente paralelo
     });
-    tl.to(
-      paths,
-      {
-        fillOpacity: 1,
-        duration: 0.5, // más rápido
-        stagger: { each: 0.05, from: "random" },
-      },
-      "+=0.1"
-    );
 
-    // CORRECCIÓN: usar kill() para limpiar
-    return () => {
-      tl.kill();
-    };
+    // Fase 2: fill en 1-3 bloques
+    const blockCount = 3;
+    const blockSize = Math.ceil(paths.length / blockCount);
+
+    for (let i = 0; i < blockCount; i++) {
+      const blockPaths = paths.slice(i * blockSize, (i + 1) * blockSize);
+      tl.to(
+        blockPaths,
+        { fillOpacity: 1, duration: 0.4 },
+        "-=0.2" // solapamos un poco entre bloques
+      );
+    }
   }, []);
 
   return (
     <svg
       ref={svgRef}
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 450 200"
+      viewBox="0 0 422 185"
       width="100%"
       height="auto"
       stroke="#000"
