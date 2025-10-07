@@ -3,6 +3,9 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["'Neue Haas Grotesk Display Pro'", "sans-serif"],
+      },
       colors: {
         // Paleta funcional
         background: "#001F3E", // Midnight Blue
