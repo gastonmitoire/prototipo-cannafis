@@ -11,35 +11,59 @@ export default function LogoAnimation() {
       svgRef.current.querySelectorAll<SVGPathElement>("path")
     );
 
-    // Inicializar strokes y fill
-    paths.forEach((path) => {
-      const length = path.getTotalLength();
-      path.style.strokeDasharray = `${length}`;
-      path.style.strokeDashoffset = `${length}`;
-      path.style.fillOpacity = "0";
-    });
+    const animate = () => {
+      // Ocultar todo al inicio
+      gsap.set(svgRef.current, { opacity: 1 });
+      paths.forEach((path) => {
+        const length = path.getTotalLength();
+        path.style.strokeDasharray = `${length}`;
+        path.style.strokeDashoffset = `${length}`;
+        path.style.fillOpacity = "0";
+      });
 
-    const tl = gsap.timeline({ defaults: { ease: "power1.inOut" } });
+      const tl = gsap.timeline({ defaults: { ease: "power1.inOut" } });
 
-    // Fase 1: strokes en paralelo
-    tl.to(paths, {
-      strokeDashoffset: 0,
-      duration: 0.8,
-      stagger: { each: 0.01, from: "random" }, // prácticamente paralelo
-    });
+      // Stroke en paralelo
+      tl.to(paths, {
+        strokeDashoffset: 0,
+        duration: 0.8,
+        stagger: { each: 0.01, from: "random" },
+      });
 
-    // Fase 2: fill en 1-3 bloques
-    const blockCount = 3;
-    const blockSize = Math.ceil(paths.length / blockCount);
+      // Fill en bloques
+      const blockCount = 3;
+      const shuffledPaths = [...paths].sort(() => Math.random() - 0.5);
+      const blockSize = Math.ceil(paths.length / blockCount);
 
-    for (let i = 0; i < blockCount; i++) {
-      const blockPaths = paths.slice(i * blockSize, (i + 1) * blockSize);
-      tl.to(
-        blockPaths,
-        { fillOpacity: 1, duration: 0.4 },
-        "-=0.2" // solapamos un poco entre bloques
-      );
-    }
+      for (let i = 0; i < blockCount; i++) {
+        const blockPaths = shuffledPaths.slice(
+          i * blockSize,
+          (i + 1) * blockSize
+        );
+        tl.to(
+          blockPaths,
+          { fillOpacity: 1, duration: 0.4 },
+          "-=0.25" // solape para más dinamismo
+        );
+      }
+    };
+
+    // Ocultar SVG hasta que entre en viewport
+    gsap.set(svgRef.current, { opacity: 0 });
+
+    // Observer para reactivar animación
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) animate();
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(svgRef.current);
+
+    return () => observer.disconnect();
   }, []);
 
   return (

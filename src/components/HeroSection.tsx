@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import LogoDraw from "./LogoDraw";
 
@@ -13,6 +13,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   containerVariants,
   useInView,
 }) => {
+  const [showLogo, setShowLogo] = useState(false);
+  const isInView = useInView(sectionRef, { amount: 0.4 });
+
+  // activar/desactivar visibilidad según scroll
+  useEffect(() => {
+    if (isInView) {
+      setShowLogo(true);
+    } else {
+      setShowLogo(false);
+    }
+  }, [isInView]);
+
   return (
     <section
       id="inicio"
@@ -36,12 +48,19 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       <motion.div
         variants={containerVariants}
         initial="hidden"
-        animate={useInView(sectionRef, { amount: 0.4 }) ? "show" : "hidden"}
+        animate={isInView ? "show" : "hidden"}
         className="flex flex-col items-center justify-center w-full z-10"
       >
-        <div className="min-w-2xl">
-          <LogoDraw />
-        </div>
+        <motion.div
+          className="min-w-2xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isInView ? 1 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          {/* forzamos remount para resetear la animación */}
+          {isInView && <LogoDraw key={isInView ? "logo-show" : "logo-hide"} />}
+        </motion.div>
+
         <motion.h2
           className="text-2xl md:text-3xl font-bold mb-6 text-cyan-900 text-center drop-shadow-neon-cyan"
           initial="hidden"
