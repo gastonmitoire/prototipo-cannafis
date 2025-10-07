@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import LogoDraw from "./LogoDraw";
+import { RiScrollToBottomLine } from "react-icons/ri";
 
 interface HeroSectionProps {
   sectionRef: React.RefObject<HTMLElement | null>;
@@ -19,7 +20,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     <section
       id="inicio"
       ref={sectionRef}
-      className="snap-center h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-cyan-100 to-green-50 relative overflow-hidden"
+      className="min-h-screen flex flex-col gap-20 items-center justify-end bg-gradient-to-br from-blue-50 via-cyan-100 to-green-50 relative overflow-hidden"
     >
       {/* Soft pastel gradient blobs */}
       <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-cyan-100/30 rounded-full blur-3xl animate-pulse z-0" />
@@ -39,7 +40,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "show" : "hidden"}
-        className="flex flex-col items-center justify-center w-full z-10"
+        className="flex flex-col items-center justify-center h-full w-full z-10"
       >
         <motion.div
           className="min-w-3xl"
@@ -52,7 +53,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         </motion.div>
 
         <motion.h2
-          className="text-2xl md:text-3xl font-bold mb-6 text-cyan-900 text-center drop-shadow-neon-cyan"
+          className="text-2xl md:text-3xl font-bold mb-6 text-accent text-center drop-shadow-neon-accent"
           initial="hidden"
           whileInView="visible"
           exit="hidden"
@@ -88,6 +89,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           </span>
         </motion.div>
       </motion.div>
+
+      <div className="grid place-items-end pb-5">
+        <RiScrollToBottomLine size={24} className="text-accent" />
+      </div>
     </section>
   );
 };

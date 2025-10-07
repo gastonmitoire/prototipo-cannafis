@@ -73,7 +73,7 @@ export default function LogoAnimation() {
       viewBox="0 0 422 185"
       width="100%"
       height="auto"
-      stroke="#001f3e"
+      stroke="#1e4990"
       strokeWidth={0.3}
       fill="#05d16e"
     >
