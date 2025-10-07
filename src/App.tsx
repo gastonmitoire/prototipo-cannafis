@@ -73,7 +73,7 @@ function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-[#0f172a] via-[#0e2e2f] to-[#1e293b] overflow-hidden font-sans futurist">
+    <div className="relative min-h-screen bg-gradient-to-br from-[#0f172a] via-[#0e2e2f] to-[#1e293b] overflow-hidden futurist">
       {/* Fondo decorativo glass global y overlays futuristas */}
       <div className="pointer-events-none fixed inset-0 z-0">
         {/* Glow radial */}

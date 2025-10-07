@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import LogoDraw from "./LogoDraw";
+import { RiScrollToBottomLine } from "react-icons/ri";
 
 interface HeroSectionProps {
   sectionRef: React.RefObject<HTMLElement | null>;
@@ -12,11 +14,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   containerVariants,
   useInView,
 }) => {
+  const isInView = useInView(sectionRef, { amount: 0.4 });
+
   return (
     <section
       id="inicio"
       ref={sectionRef}
-      className="snap-center h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-cyan-100 to-green-50 relative overflow-hidden"
+      className="min-h-screen flex flex-col gap-20 items-center justify-center bg-gradient-to-br from-blue-50 via-cyan-100 to-green-50 relative overflow-hidden"
     >
       {/* Soft pastel gradient blobs */}
       <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-cyan-100/30 rounded-full blur-3xl animate-pulse z-0" />
@@ -35,37 +39,21 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       <motion.div
         variants={containerVariants}
         initial="hidden"
-        animate={useInView(sectionRef, { amount: 0.4 }) ? "show" : "hidden"}
-        className="flex flex-col items-center justify-center w-full z-10"
+        animate={isInView ? "show" : "hidden"}
+        className="flex flex-col items-center justify-center h-full w-full z-10"
       >
-        <motion.h1
-          className="text-7xl md:text-8xl font-extrabold tracking-tight futurist drop-shadow-neon-cyan text-center antialiased subpixel-antialiased"
-          initial="hidden"
-          whileInView="visible"
-          exit="hidden"
-          viewport={{ amount: 0.5 }}
-          variants={{
-            hidden: { opacity: 0, x: 80 },
-            visible: {
-              opacity: 1,
-              x: 0,
-              transition: {
-                duration: 0.7,
-                delay: 0.3,
-                type: "spring",
-                stiffness: 60,
-              },
-            },
-          }}
-          style={{
-            textShadow:
-              "0 0 32px #67e8f9, 0 2px 8px #38bdf8, 0 0 8px #4ade80, 0 0 2px #fff",
-          }}
+        <motion.div
+          className="min-w-2xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isInView ? 1 : 0 }}
+          transition={{ duration: 0.2 }}
         >
-          CannaFIS
-        </motion.h1>
+          {/* forzamos remount para resetear la animación */}
+          {isInView && <LogoDraw key={isInView ? "logo-show" : "logo-hide"} />}
+        </motion.div>
+
         <motion.h2
-          className="text-2xl md:text-3xl font-bold mb-6 text-cyan-900 text-center drop-shadow-neon-cyan"
+          className="text-2xl md:text-3xl font-bold mb-6 text-accent text-center drop-shadow-neon-accent"
           initial="hidden"
           whileInView="visible"
           exit="hidden"
@@ -101,6 +89,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           </span>
         </motion.div>
       </motion.div>
+
+      <div className="grid place-items-end pb-5">
+        <RiScrollToBottomLine size={24} className="text-accent" />
+      </div>
     </section>
   );
 };

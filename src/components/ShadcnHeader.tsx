@@ -1,5 +1,8 @@
 import React from "react";
 
+// IMPORTANTE: El SVG debe estar dentro de src/, no en public
+import cannafisMalachiteLogo from "../assets/brand/logo/cannafis-malachite.svg";
+
 interface ShadcnHeaderProps {
   showHeader: boolean;
   menuOpen: boolean;
@@ -12,14 +15,20 @@ const ShadcnHeader: React.FC<ShadcnHeaderProps> = ({
   setMenuOpen,
 }) => {
   if (!showHeader) return null;
+
   return (
-    <header className="fixed top-0 w-full z-50 px-8 py-4 bg-slate-900 backdrop-blur-2xl transition-all duration-500 opacity-100 pointer-events-auto">
-      <div className="container mx-auto flex items-center justify-between">
+    <header className="fixed top-0 w-full h-20 z-50 bg-midnight backdrop-blur-2xl transition-all duration-500">
+      <div className="flex items-center justify-between h-full px-8">
+        {/* Logo */}
         <div className="flex items-center gap-4 select-none">
-          <span className="text-2xl font-extrabold tracking-widest text-white/80">
-            CannaFIS
-          </span>
+          <img
+            src={cannafisMalachiteLogo}
+            alt="Cannafis Logo"
+            className="min-w-32"
+          />
         </div>
+
+        {/* Botón hamburguesa */}
         <div className="flex items-center h-full">
           <button
             className="flex flex-col items-center justify-center w-14 h-14 bg-cyan-200/30 rounded-full shadow-lg border border-cyan-400/40 hover:bg-cyan-100/40 transition-all backdrop-blur-xl"
