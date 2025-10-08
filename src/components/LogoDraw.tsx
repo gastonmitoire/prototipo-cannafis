@@ -25,13 +25,13 @@ export default function LogoAnimation() {
 
       // Stroke en paralelo
       tl.to(paths, {
-        strokeDashoffset: 0,
+        strokeDashoffset: 30,
         duration: 0.8,
         stagger: { each: 0.01, from: "random" },
       });
 
       // Fill en bloques
-      const blockCount = 3;
+      const blockCount = 2;
       const shuffledPaths = [...paths].sort(() => Math.random() - 0.5);
       const blockSize = Math.ceil(paths.length / blockCount);
 
@@ -43,7 +43,7 @@ export default function LogoAnimation() {
         tl.to(
           blockPaths,
           { fillOpacity: 1, duration: 0.4 },
-          "-=0.25" // solape para más dinamismo
+          "-=0.35" // solape para más dinamismo
         );
       }
     };
