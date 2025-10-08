@@ -1,12 +1,36 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import LogoDraw from "./LogoDraw";
 import { RiScrollToBottomLine } from "react-icons/ri";
+import { gsap } from "gsap";
 
 interface HeroSectionProps {
   sectionRef: React.RefObject<HTMLElement | null>;
   containerVariants: any;
   useInView: any;
+}
+
+export function ScrollIcon() {
+  const iconRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (iconRef.current) {
+      // animación de "sube y baja" infinita
+      gsap.to(iconRef.current, {
+        y: 10,
+        repeat: -1, // infinito
+        yoyo: true, // vuelve al punto original
+        ease: "power1.inOut",
+        duration: 0.8,
+      });
+    }
+  }, []);
+
+  return (
+    <div className="grid place-items-end pb-5" ref={iconRef}>
+      <RiScrollToBottomLine size={24} className="text-accent" />
+    </div>
+  );
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({
@@ -40,7 +64,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "show" : "hidden"}
-        className="flex flex-col items-center justify-center h-full w-full z-10"
+        className="flex-1 flex flex-col items-center justify-center h-full w-full z-10"
       >
         <motion.div
           className="min-w-2xl pl-32"
@@ -90,9 +114,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         </motion.div>
       </motion.div>
 
-      <div className="grid place-items-end pb-5">
-        <RiScrollToBottomLine size={24} className="text-accent" />
-      </div>
+      <ScrollIcon />
     </section>
   );
 };
