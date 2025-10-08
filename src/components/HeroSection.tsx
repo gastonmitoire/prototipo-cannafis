@@ -20,7 +20,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     <section
       id="inicio"
       ref={sectionRef}
-      className="min-h-screen flex flex-col gap-20 items-center justify-center bg-gradient-to-br from-blue-50 via-cyan-100 to-green-50 relative overflow-hidden"
+      className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-cyan-100 to-green-50 relative overflow-hidden"
     >
       {/* Soft pastel gradient blobs */}
       <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-cyan-100/30 rounded-full blur-3xl animate-pulse z-0" />
@@ -43,7 +43,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         className="flex flex-col items-center justify-center h-full w-full z-10"
       >
         <motion.div
-          className="min-w-2xl"
+          className="min-w-2xl pl-32"
           initial={{ opacity: 0 }}
           animate={{ opacity: isInView ? 1 : 0 }}
           transition={{ duration: 0.2 }}
@@ -53,7 +53,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         </motion.div>
 
         <motion.h2
-          className="text-2xl md:text-3xl font-bold mb-6 text-accent text-center drop-shadow-neon-accent"
+          className="text-2xl md:text-3xl font-bold my-6 text-accent text-center drop-shadow-neon-accent"
           initial="hidden"
           whileInView="visible"
           exit="hidden"
