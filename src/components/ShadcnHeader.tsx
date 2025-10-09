@@ -31,22 +31,22 @@ const ShadcnHeader: React.FC<ShadcnHeaderProps> = ({
         {/* Botón hamburguesa */}
         <div className="flex items-center h-full">
           <button
-            className="flex flex-col items-center justify-center w-14 h-14 bg-cyan-200/30 rounded-full shadow-lg border border-cyan-400/40 hover:bg-cyan-100/40 transition-all backdrop-blur-xl"
+            className="flex flex-col items-center justify-center w-14 h-14 bg-primary/30 rounded-full shadow-lg border border-primary/40 hover:bg-primary/40 transition-all backdrop-blur-xl"
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
             onClick={() => setMenuOpen((open) => !open)}
           >
             <span
-              className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 mb-1 ${
+              className={`block w-8 h-1 rounded bg-primary shadow-[0_0_8px_#22d3ee] transition-all duration-300 mb-1 ${
                 menuOpen ? "rotate-45 translate-y-2" : ""
               }`}
             />
             <span
-              className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 mb-1 ${
+              className={`block w-8 h-1 rounded bg-primary shadow-[0_0_8px_#22d3ee] transition-all duration-300 mb-1 ${
                 menuOpen ? "opacity-0" : ""
               }`}
             />
             <span
-              className={`block w-8 h-1 rounded bg-cyan-400 shadow-[0_0_8px_#22d3ee] transition-all duration-300 ${
+              className={`block w-8 h-1 rounded bg-primary shadow-[0_0_8px_#22d3ee] transition-all duration-300 ${
                 menuOpen ? "-rotate-45 -translate-y-2" : ""
               }`}
             />
