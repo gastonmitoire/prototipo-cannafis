@@ -34,9 +34,15 @@ const FuturistMenu: React.FC<FuturistMenuProps> = ({
               onClick={(e) => {
                 e.preventDefault();
                 setMenuOpen(false);
-                document
-                  .getElementById(id)
-                  ?.scrollIntoView({ behavior: "smooth" });
+                const section = document.getElementById(id);
+                if (section) {
+                  const yOffset = -80; // altura del navbar o el margen que quieras
+                  const y =
+                    section.getBoundingClientRect().top +
+                    window.pageYOffset +
+                    yOffset;
+                  window.scrollTo({ top: y, behavior: "smooth" });
+                }
               }}
               className={`flex items-center h-full group-hover:text-blue-500 transition-all duration-200 ${
                 index % 2 === 0 ? "" : "justify-end"
