@@ -59,7 +59,7 @@ const ResponsabilidadSection: React.FC<ResponsabilidadSectionProps> = ({
     <section
       id="responsabilidad"
       ref={sectionRef}
-      className="bg-gradient-to-b from-slate-900 to-slate-900/80 px-4"
+      className="bg-gradient-to-b from-background to-background/80 px-4"
     >
       <div className="container mx-auto h-screen grid grid-cols-1 md:grid-cols-2 place-items-center">
         <div className="flex flex-col items-end w-full z-10 -translate-y-32">

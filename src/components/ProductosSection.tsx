@@ -137,7 +137,7 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
         backgroundAttachment: "fixed",
       }}
     >
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-transparent backdrop-blur-xs -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background backdrop-blur-xs -z-10" />
       <button
         onClick={() =>
           setBackgroundStyle((prev) =>
