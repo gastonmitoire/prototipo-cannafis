@@ -15,7 +15,7 @@ const FuturistMenu: React.FC<FuturistMenuProps> = ({
 }) => {
   if (!menuOpen) return null;
   return (
-    <nav className="fixed min-h-screen inset-0 pt-24 2xl:pt-28 z-40 flex flex-col items-center justify-center bg-slate-900/90 backdrop-blur-2xl">
+    <nav className="fixed min-h-screen inset-0 pt-24 2xl:pt-28 z-40 flex flex-col items-center justify-center bg-background/90 backdrop-blur-2xl">
       <ul className="container mx-auto grid w-full h-full text-4xl 2xl:text-7xl font-bold text-white/80">
         {sections.map((id, index) => (
           <motion.li

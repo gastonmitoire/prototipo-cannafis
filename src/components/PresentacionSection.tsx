@@ -172,7 +172,7 @@ const PresentacionSection: React.FC<PresentacionSectionProps> = ({
         d="M0,224L48,202.7C96,181,192,139,288,128C384,117,480,139,576,154.7C672,171,768,181,864,170.7C960,160,1056,128,1152,128C1248,128,1344,160,1392,176L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
       />
     </svg> */}
-    <div className="absolute bg-gradient-to-t from-slate-900 w-full h-52 bottom-0" />
+    <div className="absolute bg-gradient-to-t from-background w-full h-52 bottom-0" />
   </section>
 );
 
