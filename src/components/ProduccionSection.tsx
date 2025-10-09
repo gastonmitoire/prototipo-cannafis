@@ -114,9 +114,9 @@ const ProduccionSection: React.FC<ProduccionSectionProps> = ({
   <section
     id="produccion"
     ref={sectionRef}
-    className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-900/90 via-slate-900/70 to-slate-900/40 px-4 pt-20"
+    className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-background/90 via-background/70 to-background/40 px-4 pt-20"
   >
-    <div className="absolute bg-gradient-to-b from-slate-900 w-full h-52 top-0 z-0" />
+    <div className="absolute bg-gradient-to-b from-background w-full h-52 top-0 z-0" />
     <motion.div
       variants={containerVariants}
       initial="hidden"

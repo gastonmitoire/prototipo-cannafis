@@ -2,43 +2,52 @@ import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { useInView as useInViewLib } from "framer-motion";
 import { Heading } from "./ui/heading";
+
 // Componente animado para canal de distribución
 const CanalDistribucion: React.FC<{ text: string }> = ({ text }) => {
   const ref = useRef<HTMLParagraphElement | null>(null);
   const inView = useInViewLib(ref, { amount: 0.7, once: false });
   return (
-    <motion.p
-      ref={ref}
-      initial={{ opacity: 0, x: 16 }}
-      animate={
-        inView
-          ? {
-              opacity: 1,
-              x: 0,
-              transition: {
-                type: "spring" as const,
-                stiffness: 320,
-                damping: 28,
-                mass: 0.7,
-              },
-            }
-          : { opacity: 0, x: 16 }
-      }
-      className="text-white/70 w-max line-clamp-1 text-2xl 2xl:text-3xl font-medium italic capitalize relative overflow-visible"
-      style={{ borderTop: "3px solid transparent" }}
-    >
+    <motion.div ref={ref} className="relative text-white/90">
+      <motion.h2
+        ref={ref}
+        className="uppercase text-3xl text-white/80 font-bold"
+        initial={{
+          translateX: 0,
+          paddingTop: 3,
+          paddingBottom: 3,
+        }}
+        animate={
+          inView
+            ? {
+                translateX: 10,
+                paddingTop: 10,
+                paddingBottom: 10,
+              }
+            : {
+                translateX: 0,
+                paddingTop: 3,
+                paddingBottom: 3,
+              }
+        }
+        transition={{
+          duration: 1.22,
+          delay: 0.13,
+        }}
+      >
+        {text}
+      </motion.h2>
       <motion.span
         initial={{ width: 0 }}
         animate={
           inView
-            ? { width: "100%", transition: { duration: 1.02, delay: 0.03 } }
+            ? { width: "100%", transition: { duration: 1.22, delay: 0.13 } }
             : { width: 0 }
         }
-        className="absolute left-0 top-0 h-0.5 bg-white/20 rounded-full"
-        style={{ borderRadius: 2, height: 3, background: "#ffffff33" }}
+        className="absolute left-0 bottom-0 h-0.5 bg-white/20 rounded-full"
+        style={{ borderRadius: 2, height: 1.5, background: "#ffffff33" }}
       />
-      <span className="relative z-10 mt-2 block">{text}</span>
-    </motion.p>
+    </motion.div>
   );
 };
 interface ProductosSectionProps {
@@ -49,7 +58,7 @@ interface ProductosSectionProps {
 }
 
 const ProductosCard = ({ children }: { children: React.ReactNode }) => (
-  <div className="h-full w-full text-right text-lg p-10 bg-black/30 backdrop-blur-sm">
+  <div className="h-full w-full text-lg p-10 bg-black/10 backdrop-blur-sm">
     {children}
   </div>
 );
@@ -137,7 +146,7 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
         backgroundAttachment: "fixed",
       }}
     >
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-transparent backdrop-blur-xs -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background backdrop-blur-xs -z-10" />
       <button
         onClick={() =>
           setBackgroundStyle((prev) =>

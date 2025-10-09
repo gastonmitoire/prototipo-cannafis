@@ -1,5 +1,5 @@
 // Datos de certificaciones y habilitaciones para cards reutilizables
-const certificaciones = [
+export const certificaciones = [
   {
     logo: (
       <img
@@ -87,7 +87,7 @@ const gridVariants = {
   },
 };
 
-function CertCard({
+export function CertCard({
   logo,
   title,
   subtitle,
