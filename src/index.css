@@ -23,3 +23,19 @@
 body {
   font-family: var(--font-sans);
 }
+
+/* Site-wide centered container that matches logo/hamburger max width
+   - max-width: min(2200px, 95vw) keeps content readable on ultra-wide screens
+   - padding matches Tailwind container padding (2rem)
+*/
+/* site-container removed - using Tailwind's container utility instead */
+
+/* Override Tailwind's container to use a viewport-based max-width so it
+   occupies most of the viewport but caps at a large width. Padding stays
+   controlled by tailwind.config.js (32px as configured).
+*/
+@layer components {
+  .container {
+    max-width: min(2200px, 95vw);
+  }
+}

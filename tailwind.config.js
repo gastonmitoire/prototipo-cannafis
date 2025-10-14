@@ -9,8 +9,8 @@ module.exports = {
         sm: "640px",
         md: "768px",
         lg: "1024px",
-        xl: "1280px",
-        "2xl": "1536px",
+        xl: "1440px", // aumentar para pantallas grandes
+        "2xl": "2200px", // permitir muy pantallas muy anchas
       },
     },
   },

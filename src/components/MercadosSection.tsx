@@ -64,10 +64,10 @@ const MercadosSection: React.FC<MercadosSectionProps> = ({
     <section
       id="mercados"
       ref={sectionRef}
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background/30 via-blue-950/70 to-background/70 border-y border-blue-900/40 px-4 p-10 2xl:py-20"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background/30 via-blue-950/70 to-background/70 border-y border-blue-900/40 p-10 2xl:py-20"
     >
       <div className="flex flex-col items-center w-full z-10">
-        <div className="container w-full">
+        <div className="container mx-auto px-8 w-full">
           <Heading
             animation={{
               direction: "bottom",

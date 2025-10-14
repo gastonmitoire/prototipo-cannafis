@@ -160,7 +160,7 @@ const CertificacionesSection: React.FC<CertificacionesSectionProps> = ({
     <section
       id="certificaciones"
       ref={sectionRef}
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-green-50 to-blue-100 text-blue-900 w-full px-8 pt-5"
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-green-50 to-blue-100 text-blue-900 w-full pt-5"
     >
       <div className="flex flex-col items-center w-full z-10">
         <motion.div
@@ -168,7 +168,7 @@ const CertificacionesSection: React.FC<CertificacionesSectionProps> = ({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, type: "spring" }}
-          className="w-full pt-10"
+          className="container mx-auto px-8 w-full pt-10"
         >
           <Heading className="text-center mx-auto">Certificaciones</Heading>
           {/* Cards de certificación grandes y reutilizables */}
