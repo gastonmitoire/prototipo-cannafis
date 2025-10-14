@@ -63,7 +63,7 @@ const PresentacionSection: React.FC<PresentacionSectionProps> = ({
           }}
         >
           <motion.h2
-            className="max-w-[60%] 2xl:max-w-full text-3xl 2xl:text-6xl place-self-end font-bold text-blue-400 text-right"
+            className="max-w-[65%] 2xl:max-w-full text-3xl 2xl:text-6xl place-self-end font-bold text-blue-400 text-right"
             initial="hidden"
             whileInView="visible"
             exit="hidden"
@@ -80,7 +80,7 @@ const PresentacionSection: React.FC<PresentacionSectionProps> = ({
             La primera empresa argentina
           </motion.h2>
           <motion.h2
-            className="max-w-[60%] 2xl:max-w-full text-3xl 2xl:text-6xl place-self-end font-bold text-white/80 text-right"
+            className="max-w-[65%] 2xl:max-w-full text-3xl 2xl:text-6xl place-self-end font-bold text-white/80 text-right"
             initial="hidden"
             whileInView="visible"
             exit="hidden"
@@ -99,7 +99,7 @@ const PresentacionSection: React.FC<PresentacionSectionProps> = ({
         </motion.div>
         {/* Lado derecho: párrafos, entran desde la izquierda */}
         <motion.div
-          className="max-w-xs 2xl:max-w-full grid space-y-1.5 2xl:space-y-3 p-3 2xl:p-5"
+          className="max-w-xs 2xl:max-w-full grid space-y-6 2xl:space-y-3 p-3 2xl:p-5"
           initial="hidden"
           whileInView="visible"
           exit="hidden"

@@ -76,7 +76,7 @@ const MercadosSection: React.FC<MercadosSectionProps> = ({
           >
             Mercados y alianzas
           </Heading>
-          <div className="max-w-4xl 2xl:max-w-6xl grid grid-rows-3 gap-3 mt-6">
+          <div className="max-w-3xl 2xl:max-w-6xl grid grid-rows-3 gap-3 mt-6">
             {mercadosData.map((item, key) => (
               <MercadosCard key={key} text={item.text} fadeUp={fadeUp} />
             ))}
