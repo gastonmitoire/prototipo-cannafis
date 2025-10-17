@@ -17,6 +17,22 @@
 
   /* Fuente */
   --font-sans: "Neue Haas Grotesk Display Pro", sans-serif;
+
+  /* Breakpoints */
+  --screen-sm: 640px;
+  --screen-md: 768px;
+  --screen-lg: 1024px;
+  --screen-xl: 1440px;
+  --screen-2xl: 2200px;
+
+  /* Container */
+  --container-padding: 2rem; /* 32px */
+  --container-max-width: 2200px; /* 2200px */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1440px;
+  --container-2xl: 2200px;
 }
 
 /* Aplicar fuente globalmente */

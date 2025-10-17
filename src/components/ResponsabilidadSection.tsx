@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ContactoStepper } from "./ui/stepper";
 import { Heading } from "./ui/heading";
-import { CertCard, certificaciones } from "./CertificacionesSection";
 interface ResponsabilidadSectionProps {
   sectionRef: React.RefObject<HTMLElement | null>;
   containerVariants: any;
@@ -98,24 +97,6 @@ const ResponsabilidadSection: React.FC<ResponsabilidadSectionProps> = ({
             <ContactoStepper inView={inView} />
           </div>
           <Contacto inView={inView} />
-        </div>
-        <div className="relative w-full text-center py-10 md:col-span-2">
-          <motion.span
-            initial={{ width: 0 }}
-            animate={
-              inView
-                ? { width: "100%", transition: { duration: 1.22, delay: 0.13 } }
-                : { width: 0 }
-            }
-            className="absolute left-0 top-0 h-0.5 bg-white/20 rounded-full"
-            style={{ borderRadius: 2, height: 1.5, background: "#ffffff33" }}
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-4">
-            {certificaciones.map((cert) => (
-              <CertCard key={cert.title} {...cert} />
-            ))}
-          </div>
         </div>
       </div>
     </section>
