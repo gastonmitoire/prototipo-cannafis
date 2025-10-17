@@ -31,7 +31,7 @@ export default function LogoAnimation() {
       });
 
       // Fill en bloques
-      const blockCount = 2;
+      const blockCount = 3;
       const shuffledPaths = [...paths].sort(() => Math.random() - 0.5);
       const blockSize = Math.ceil(paths.length / blockCount);
 

@@ -64,25 +64,28 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "show" : "hidden"}
-        className="flex-1 flex flex-col items-center justify-center h-full w-full z-10"
+        className="@container flex-1 flex flex-col items-center justify-center h-full w-full z-10"
       >
         {/* Logo area: centered, scales with viewport width but capped for huge screens */}
+
         <motion.div
-          className="w-[95vw] max-w-[2200px] mx-auto flex items-center justify-center px-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isInView ? 1 : 0 }}
-          transition={{ duration: 0.2 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ amount: 0.5 }}
+          transition={{
+            duration: 0.8,
+            delay: 0.2,
+            type: "spring",
+            stiffness: 70,
+          }}
+          style={{ width: "clamp(290px, 35vw, 530px)" }}
         >
-          <div style={{ width: "clamp(160px, 22vw, 520px)" }}>
-            {/* forzamos remount para resetear la animación */}
-            {isInView && (
-              <LogoDraw key={isInView ? "logo-show" : "logo-hide"} />
-            )}
-          </div>
+          {/* forzamos remount para resetear la animación */}
+          {isInView && <LogoDraw key={isInView ? "logo-show" : "logo-hide"} />}
         </motion.div>
 
         <motion.h2
-          className="font-bold my-6 text-accent text-center drop-shadow-neon-accent"
+          className="font-bold my-6 text-accent text-center drop-shadow-neon-accent max-w-xs md:max-w-md lg:max-w-lg"
           initial="hidden"
           whileInView="visible"
           exit="hidden"
