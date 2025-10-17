@@ -114,14 +114,14 @@ const ProduccionSection: React.FC<ProduccionSectionProps> = ({
   <section
     id="produccion"
     ref={sectionRef}
-    className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-background/90 via-background/70 to-background/40 px-4 pt-20"
+    className="relative min-h-screen flex items-center justify-center px-4 bg-gradient-to-b from-background/90 via-background/70 to-background/40 px-4 pt-20"
   >
     <div className="absolute bg-gradient-to-b from-background w-full h-52 top-0 z-0" />
     <motion.div
       variants={containerVariants}
       initial="hidden"
       animate={useInView(sectionRef, { amount: 0.4 }) ? "show" : "hidden"}
-      className="container mx-auto flex flex-col items-center w-full z-10"
+      className="@container flex flex-col items-center w-full z-10"
     >
       {/* Título con animación solo cuando es visible */}
       {(() => {

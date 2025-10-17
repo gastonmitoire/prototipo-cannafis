@@ -136,7 +136,7 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
     <section
       id="productos"
       ref={sectionRef}
-      className="relative h-screen -z-10"
+      className="relative h-screen px-4 -z-10"
       style={{
         backgroundImage:
           'url("https://www.transparenttextures.com/patterns/' +
@@ -157,7 +157,7 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
       >
         Cambiar fondo
       </button>
-      <div className="container mx-auto grid grid-cols-5 gap-5 pt-10 2xl:pt-20">
+      <div className="@container grid grid-cols-5 gap-5 pt-10 2xl:pt-20">
         <motion.div
           variants={containerVariants}
           initial="hidden"
