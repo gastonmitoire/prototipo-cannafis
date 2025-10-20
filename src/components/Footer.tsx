@@ -44,7 +44,7 @@ const Footer: React.FC = () => (
           style={{ borderRadius: 2, height: 1.5, background: "#ffffff33" }}
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 px-8">
+        <div className="grid grid-cols-4 gap-4 lg:px-8">
           {certificaciones.map((cert) => (
             <img
               key={cert.title}
