@@ -1,6 +1,7 @@
 import React from "react";
 import { motion, useInView } from "framer-motion";
 import { Heading } from "./ui/heading";
+import { Card } from "./ui/card";
 
 interface ProduccionSectionProps {
   sectionRef: React.RefObject<HTMLElement | null>;
@@ -28,28 +29,14 @@ const ProduccionCard: React.FC<ProduccionCardProps> = ({
   const ref = React.useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.5 });
   return (
-    <div
-      ref={ref}
-      className="bg-black/30 rounded-xl shadow-lg px-6 py-28 flex flex-col items-center z-10"
-    >
-      <motion.span
-        className="text-5xl mb-2"
-        initial={{ opacity: 0, x: 16 }}
-        animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 16 }}
-        transition={{ duration: 0.5, delay: 0.25 }}
-      >
-        {icon}
-      </motion.span>
-      <Heading>{title}</Heading>
-      <motion.span
-        className="text-white/50 text-center"
-        initial={{ opacity: 0, x: 10 }}
-        animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 10 }}
-        transition={{ duration: 0.5, delay: 0.38 }}
-      >
-        {description}
-      </motion.span>
-    </div>
+    <Card className="aspect-[3/2] lg:aspect-[2/1] bg-white/10 backdrop-blur-md border border-white/20 p-6 flex flex-col items-center justify-center text-center h-full">
+      <div>
+        <div className="text-5xl mb-4">{icon}</div>
+        <h3 className="text-xl font-semibold mb-2 text-white">{title}</h3>
+      </div>
+
+      <p className="text-white/80">{description}</p>
+    </Card>
   );
 };
 
