@@ -16,7 +16,7 @@ const PresentacionSection: React.FC<PresentacionSectionProps> = ({
   <section
     id="presentacion"
     ref={sectionRef}
-    className="relative h-screen flex items-center justify-center bg-gradient-to-b from-background via-background/70 to-background/90 px-4 overflow-hidden"
+    className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-background via-background/70 to-background/90 px-4 overflow-hidden"
   >
     {/* Divider decorativo superior */}
     {/* <svg
@@ -40,7 +40,7 @@ const PresentacionSection: React.FC<PresentacionSectionProps> = ({
       animate={useInView(sectionRef, { amount: 0.4 }) ? "show" : "hidden"}
       className="max-w-5xl"
     >
-      <motion.div className="grid grid-cols-2">
+      <motion.div className="grid md:grid-cols-2">
         {/* Lado izquierdo: títulos, entran desde la derecha */}
         <motion.div
           className="space-y-1.5 2xl:space-y-3"
