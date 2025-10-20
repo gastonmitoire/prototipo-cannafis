@@ -19,7 +19,7 @@ const MercadosCard: React.FC<MercadosCardProps> = ({ text }) => {
     <motion.div ref={ref} className="relative py-1.5 2xl:py-3 text-white/90">
       <Heading
         expand
-        className="text-right mt-1.5 2xl:mt-3 max-w-[65%] 2xl:max-w-full place-self-end"
+        className="text-right mt-1.5 2xl:mt-3 lg:max-w-[65%] 2xl:max-w-full place-self-end"
         animation={{
           direction: "right",
           transition: { duration: 1.02, delay: 0.33 },
@@ -64,7 +64,7 @@ const MercadosSection: React.FC<MercadosSectionProps> = ({
     <section
       id="mercados"
       ref={sectionRef}
-      className="min-h-screen px-4 flex items-center bg-gradient-to-br from-background/30 via-blue-950/70 to-background/70 border-y border-blue-900/40 2xl:py-20"
+      className="h-[85vh] lg:min-h-screen px-4 py-20 lg:py-0 flex lg:items-center bg-gradient-to-br from-background/30 via-blue-950/70 to-background/70 border-y border-blue-900/40 2xl:py-20"
     >
       <div className="@container flex flex-col items-center w-full z-10">
         <div className="w-full">
@@ -76,7 +76,7 @@ const MercadosSection: React.FC<MercadosSectionProps> = ({
           >
             Mercados y alianzas
           </Heading>
-          <div className="max-w-3xl 2xl:max-w-6xl grid grid-rows-3 gap-3 mt-6">
+          <div className="max-w-3xl 2xl:max-w-6xl space-y-5 lg:grid lg:grid-rows-3 lg:gap-3 mt-6">
             {mercadosData.map((item, key) => (
               <MercadosCard key={key} text={item.text} fadeUp={fadeUp} />
             ))}

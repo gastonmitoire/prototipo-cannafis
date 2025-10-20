@@ -29,7 +29,7 @@ const Heading: React.FC<HeadingProps> = ({
   const ref = useRef<HTMLHeadingElement>(null);
   const inView = useInView(ref, { amount: 0.5 });
   const base = expand
-    ? "text-3xl xl:text-3xl 2xl:text-6xl font-extrabold tracking-tight uppercase"
+    ? "text-2xl xl:text-3xl 2xl:text-6xl font-extrabold tracking-tight uppercase"
     : "text-sm xl:text-lg 2xl:text-xl font-bold tracking-tight mb-2 uppercase";
 
   // Definir animación según variant
