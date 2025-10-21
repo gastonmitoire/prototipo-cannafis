@@ -23,20 +23,60 @@ const ProduccionCard: React.FC<ProduccionCardProps> = ({
   icon,
   title,
   description,
-  // custom,
-  // variants,
 }) => {
-  const ref = React.useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { amount: 0.5 });
   return (
-    <Card className="aspect-[3/2] lg:aspect-[2/1] bg-white/10 backdrop-blur-md border border-white/20 p-6 flex flex-col items-center justify-center text-center h-full">
-      <div>
-        <div className="text-5xl mb-4">{icon}</div>
-        <h3 className="text-xl font-semibold mb-2 text-white">{title}</h3>
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      transition={{ type: "spring", stiffness: 200, damping: 12 }}
+      className="relative aspect-[3/2] lg:aspect-[2/1] p-6 flex flex-col items-center justify-center text-center rounded-lg overflow-hidden backdrop-blur-md bg-black/30 shadow-md shadow-accent/10 group z-20"
+    >
+      {/* Borde animado */}
+      <div className="absolute inset-0 border-[2px] border-transparent border-gradient-motion pointer-events-none" />
+
+      {/* Contenido */}
+      <div className="z-10">
+        <div className="text-5xl mb-4 group-hover:hidden transition-all">
+          {icon}
+        </div>
+        <h3 className="text-xl lg:text-2xl font-semibold mb-2 text-white group-hover:hidden transition-all">
+          {title}
+        </h3>
+        <p className="text-lg tracking-wide text-white/80 hidden group-hover:block transition-all">
+          {description}
+        </p>
       </div>
 
-      <p className="text-white/80">{description}</p>
-    </Card>
+      {/* Estilos del borde animado */}
+      <style>{`
+        @property --a {
+          syntax: "<angle>";
+          inherits: true;
+          initial-value: 0deg;
+        }
+
+        @keyframes spin-border {
+          from { --a: 0deg; }
+          to { --a: 360deg; }
+        }
+
+        .border-gradient-motion {
+          border-image: conic-gradient(from var(--a), #1e4990, #05d16e, #001f3e, #1e4990) 1;
+          opacity: 0.4;
+          transition: opacity 0.4s ease-in-out;
+          mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+        }
+
+        /* Al hacer hover sobre la tarjeta */
+        .group:hover .border-gradient-motion {
+          animation: spin-border 4s linear infinite;
+          opacity: 1;
+        }
+      `}</style>
+    </motion.div>
   );
 };
 
@@ -101,19 +141,19 @@ const ProduccionSection: React.FC<ProduccionSectionProps> = ({
   <section
     id="produccion"
     ref={sectionRef}
-    className="relative min-h-screen flex items-center justify-center px-4 bg-gradient-to-b from-background/90 via-background/70 to-background/40 px-4 pt-20"
+    className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-background/90 via-background/70 to-background/40 px-4 pt-20"
   >
     <div className="absolute bg-gradient-to-b from-background w-full h-52 top-0 z-0" />
     <motion.div
       variants={containerVariants}
       initial="hidden"
       animate={useInView(sectionRef, { amount: 0.4 }) ? "show" : "hidden"}
-      className="@container flex flex-col items-center w-full z-10"
+      className="@container flex flex-col items-center max-w-lg w-full z-10"
     >
       {/* Título con animación solo cuando es visible */}
       {(() => {
         return (
-          <Heading expand className="self-start text-white/80 pb-10">
+          <Heading className="self-start text-blue-300 pb-10">
             Producción y calidad
           </Heading>
         );
@@ -124,7 +164,7 @@ const ProduccionSection: React.FC<ProduccionSectionProps> = ({
         variants={containerVariants}
         initial="hidden"
         animate={useInView(sectionRef, { amount: 0.4 }) ? "show" : "hidden"}
-        className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full"
+        className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full"
       >
         {produccionCards.map((card, idx) => (
           <ProduccionCard
