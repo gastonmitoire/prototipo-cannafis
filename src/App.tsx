@@ -140,7 +140,7 @@ function App() {
           useInView={useInView}
         />
         <ImageWithZoomSection
-          imageUrl="/images/backgrounds/cogollo.jpg"
+          imageUrl="/images/backgrounds/v2/HRY_7777.jpg"
           alt="Placeholder image"
         />
         <ProduccionSection
@@ -150,7 +150,7 @@ function App() {
           useInView={useInView}
         />
         <ImageWithZoomSection
-          imageUrl="/images/backgrounds/estante.jpg"
+          imageUrl="/images/backgrounds/v2/HRY_8178.jpg"
           alt="Placeholder image"
         />
         <CertificacionesSection
@@ -160,7 +160,7 @@ function App() {
           useInView={useInView}
         />
         <ImageWithZoomSection
-          imageUrl="/images/backgrounds/grupo.jpg"
+          imageUrl="/images/backgrounds/v2/HRY_7957.jpg"
           alt="Placeholder image"
         />
         <ProductosSection
@@ -170,7 +170,7 @@ function App() {
           useInView={useInView}
         />
         <ImageWithZoomSection
-          imageUrl="/images/backgrounds/rojo.jpg"
+          imageUrl="/images/backgrounds/v2/HRY_7910.jpg"
           alt="Placeholder image"
         />
         <MercadosSection
@@ -179,7 +179,7 @@ function App() {
           useInView={useInView}
         />
         <ImageWithZoomSection
-          imageUrl="/images/backgrounds/luces.jpg"
+          imageUrl="/images/backgrounds/v2/HRY_7929.jpg"
           alt="Placeholder image"
         />
         <ResponsabilidadSection
