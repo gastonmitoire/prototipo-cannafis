@@ -66,7 +66,7 @@ export function CertCard({
   return (
     <motion.div
       ref={ref}
-      className={`flex flex-col items-center justify-center aspect-square max-w-xs w-full mx-auto p-8 rounded-3xl shadow-2xl border border-blue-100 bg-gradient-to-br ${bg}`}
+      className={`flex flex-col items-center justify-center aspect-square max-w-xl w-full mx-auto p-8 rounded-3xl shadow-2xl border border-blue-100 bg-gradient-to-br ${bg}`}
       variants={cardVariants}
       initial="hidden"
       animate={inView ? "show" : "hidden"}
@@ -165,7 +165,7 @@ const CertificacionesSection: React.FC<CertificacionesSectionProps> = ({
               bottomInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }
             }
             transition={{ duration: 0.7, delay: 0.4, type: "tween" }}
-            className="text-center text-2xl text-slate-900 font-semibold mt-8 pt-24 pb-52 mx-auto max-w-2xl"
+            className="text-center text-2xl text-slate-900 font-semibold mt-8 pt-24 pb-52 mx-auto max-w-md"
           >
             Nuestras certificaciones garantizan la calidad y seguridad de
             nuestros productos, cumpliendo con los más altos estándares

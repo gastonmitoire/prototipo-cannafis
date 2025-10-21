@@ -148,7 +148,7 @@ const ProduccionSection: React.FC<ProduccionSectionProps> = ({
       variants={containerVariants}
       initial="hidden"
       animate={useInView(sectionRef, { amount: 0.4 }) ? "show" : "hidden"}
-      className="@container flex flex-col items-center max-w-lg w-full z-10"
+      className="@container flex flex-col items-center max-w-xl w-full z-10"
     >
       {/* Título con animación solo cuando es visible */}
       {(() => {
