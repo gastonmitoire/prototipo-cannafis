@@ -1,62 +1,25 @@
 // Datos de certificaciones y habilitaciones para cards reutilizables
 export const certificaciones = [
   {
-    logo: (
-      <img
-        src="https://cosantiago.com.ar/controladores/resize.php?carpeta=actualidades&width=850&height=0&file=COS1570536621U7.jpg"
-        alt="ANMAT Logo"
-        className="w-32 h-32 object-contain rounded-full bg-white/80 border border-green-200 shadow"
-      />
-    ),
+    imgSrc: "/images/certifications/anmat_cert.png",
     title: "ANMAT",
     subtitle: "Disposición N° DI-2025-5561",
     bg: "from-blue-100 via-blue-50 to-green-100",
   },
   {
-    logo: (
-      <svg width="110" height="110" fill="none" viewBox="0 0 36 36">
-        <circle cx="18" cy="18" r="16" fill="#fbbf24" opacity=".15" />
-        <rect
-          x="12"
-          y="12"
-          width="12"
-          height="12"
-          rx="3"
-          stroke="#fbbf24"
-          strokeWidth="2.2"
-        />
-        <path
-          d="M15 18h6"
-          stroke="#fbbf24"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
+    imgSrc: "/images/certifications/csc_cert.png",
     title: "Sustancia Controlada (CSC)",
     subtitle: "Cannabis psicoactivo habilitado",
     bg: "from-yellow-100 via-yellow-50 to-green-100",
   },
   {
-    logo: (
-      <img
-        src="https://tb-farming.com/wp-content/uploads/2024/01/GACP-LOGO.png"
-        alt="Control Unión Logo"
-        className="w-32 h-32 object-contain pl-3.5 rounded-full bg-white/80 border border-green-200 shadow"
-      />
-    ),
+    imgSrc: "/images/certifications/gacp_cert.png",
     title: "Control Unión",
     subtitle: "Cumplimiento GACP y calidad vegetal exportable",
     bg: "from-green-100 via-green-50 to-blue-100",
   },
   {
-    logo: (
-      <img
-        src="https://static.vecteezy.com/system/resources/previews/021/863/065/non_2x/gmp-certified-or-good-manufacturing-practice-certified-badge-stamp-icon-seal-label-tag-emblem-for-cbd-label-oil-and-packaging-design-illustration-vector.jpg"
-        alt="GMP Certified Logo"
-        className="w-32 h-32 object-contain rounded-full bg-white/80 border border-green-200 shadow"
-      />
-    ),
+    imgSrc: "/images/certifications/gmp_cert.png",
     title: "GMP/BPF",
     subtitle: "Buenas Prácticas de Fabricación certificadas",
     bg: "from-green-100 via-green-50 to-blue-100",
@@ -88,12 +51,12 @@ const gridVariants = {
 };
 
 export function CertCard({
-  logo,
+  imgSrc,
   title,
   subtitle,
   bg,
 }: {
-  logo: React.ReactNode;
+  imgSrc?: string;
   title: string;
   subtitle: string;
   bg: string;
@@ -103,7 +66,7 @@ export function CertCard({
   return (
     <motion.div
       ref={ref}
-      className={`flex flex-col items-center justify-center aspect-square max-w-xs w-full mx-auto p-8 rounded-3xl shadow-2xl border border-blue-100 bg-gradient-to-br ${bg}`}
+      className={`flex flex-col items-center justify-center aspect-square max-w-xl w-full mx-auto p-8 rounded-3xl shadow-2xl border border-blue-100 bg-gradient-to-br ${bg}`}
       variants={cardVariants}
       initial="hidden"
       animate={inView ? "show" : "hidden"}
@@ -116,7 +79,19 @@ export function CertCard({
         exit={{ opacity: 0, y: 24 }}
         transition={{ duration: 0.5, delay: 0.08 }}
       >
-        {logo}
+        {imgSrc ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={imgSrc}
+            alt={title}
+            className="w-20 h-20 object-contain"
+            loading="lazy"
+          />
+        ) : (
+          <div className="w-20 h-20 bg-blue-200/50 rounded-full flex items-center justify-center text-blue-900 font-bold">
+            No Image
+          </div>
+        )}
       </motion.div>
       <div className="flex flex-col items-center text-center w-full">
         <motion.div
@@ -160,7 +135,7 @@ const CertificacionesSection: React.FC<CertificacionesSectionProps> = ({
     <section
       id="certificaciones"
       ref={sectionRef}
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-green-50 to-blue-100 text-blue-900 w-full px-8 pt-5"
+      className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-white via-green-50 to-blue-100 text-blue-900 w-full pt-5"
     >
       <div className="flex flex-col items-center w-full z-10">
         <motion.div
@@ -168,7 +143,7 @@ const CertificacionesSection: React.FC<CertificacionesSectionProps> = ({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, type: "spring" }}
-          className="w-full pt-10"
+          className="@container w-full pt-10"
         >
           <Heading className="text-center mx-auto">Certificaciones</Heading>
           {/* Cards de certificación grandes y reutilizables */}
@@ -190,7 +165,7 @@ const CertificacionesSection: React.FC<CertificacionesSectionProps> = ({
               bottomInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }
             }
             transition={{ duration: 0.7, delay: 0.4, type: "tween" }}
-            className="text-center text-2xl text-slate-900 font-semibold mt-8 pt-24 pb-52 mx-auto max-w-2xl"
+            className="text-center text-2xl text-slate-900 font-semibold mt-8 pt-24 pb-52 mx-auto max-w-md"
           >
             Nuestras certificaciones garantizan la calidad y seguridad de
             nuestros productos, cumpliendo con los más altos estándares

@@ -17,8 +17,8 @@ const ShadcnHeader: React.FC<ShadcnHeaderProps> = ({
   if (!showHeader) return null;
 
   return (
-    <header className="fixed top-0 w-full h-20 z-50 bg-midnight backdrop-blur-2xl transition-all duration-500">
-      <div className="flex items-center justify-between h-full px-8">
+    <header className="fixed top-0 w-full z-50 py-4 px-4 bg-midnight backdrop-blur-2xl transition-all duration-500">
+      <div className="@container flex items-center justify-between h-full">
         {/* Logo */}
         <div className="flex items-center gap-4 select-none">
           <img

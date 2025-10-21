@@ -1,5 +1,5 @@
 import React from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { Heading } from "./ui/heading";
 
 interface ProduccionSectionProps {
@@ -22,34 +22,60 @@ const ProduccionCard: React.FC<ProduccionCardProps> = ({
   icon,
   title,
   description,
-  // custom,
-  // variants,
 }) => {
-  const ref = React.useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { amount: 0.5 });
   return (
-    <div
-      ref={ref}
-      className="bg-black/30 rounded-xl shadow-lg px-6 py-28 flex flex-col items-center z-10"
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      transition={{ type: "spring", stiffness: 200, damping: 12 }}
+      className="relative aspect-[3/2] lg:aspect-[2/1] p-6 flex flex-col items-center justify-center text-center rounded-lg overflow-hidden backdrop-blur-md bg-black/30 shadow-md shadow-accent/10 group z-20"
     >
-      <motion.span
-        className="text-5xl mb-2"
-        initial={{ opacity: 0, x: 16 }}
-        animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 16 }}
-        transition={{ duration: 0.5, delay: 0.25 }}
-      >
-        {icon}
-      </motion.span>
-      <Heading>{title}</Heading>
-      <motion.span
-        className="text-white/50 text-center"
-        initial={{ opacity: 0, x: 10 }}
-        animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 10 }}
-        transition={{ duration: 0.5, delay: 0.38 }}
-      >
-        {description}
-      </motion.span>
-    </div>
+      {/* Borde animado */}
+      <div className="absolute inset-0 border-[2px] border-transparent border-gradient-motion pointer-events-none" />
+
+      {/* Contenido */}
+      <div className="z-10">
+        <div className="text-5xl mb-4 group-hover:hidden transition-all">
+          {icon}
+        </div>
+        <h3 className="text-xl lg:text-2xl font-semibold mb-2 text-white group-hover:hidden transition-all">
+          {title}
+        </h3>
+        <p className="text-lg tracking-wide text-white/80 lg:hidden lg:group-hover:block transition-all">
+          {description}
+        </p>
+      </div>
+
+      {/* Estilos del borde animado */}
+      <style>{`
+        @property --a {
+          syntax: "<angle>";
+          inherits: true;
+          initial-value: 0deg;
+        }
+
+        @keyframes spin-border {
+          from { --a: 0deg; }
+          to { --a: 360deg; }
+        }
+
+        .border-gradient-motion {
+          border-image: conic-gradient(from var(--a), #1e4990, #05d16e, #001f3e, #1e4990) 1;
+          opacity: 0.4;
+          transition: opacity 0.4s ease-in-out;
+          mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+        }
+
+        /* Al hacer hover sobre la tarjeta */
+        .group:hover .border-gradient-motion {
+          animation: spin-border 4s linear infinite;
+          opacity: 1;
+        }
+      `}</style>
+    </motion.div>
   );
 };
 
@@ -121,12 +147,12 @@ const ProduccionSection: React.FC<ProduccionSectionProps> = ({
       variants={containerVariants}
       initial="hidden"
       animate={useInView(sectionRef, { amount: 0.4 }) ? "show" : "hidden"}
-      className="container mx-auto flex flex-col items-center w-full z-10"
+      className="@container flex flex-col items-center max-w-xl w-full z-10"
     >
       {/* Título con animación solo cuando es visible */}
       {(() => {
         return (
-          <Heading expand className="self-start text-white/80 pb-10">
+          <Heading className="self-start text-blue-300 pb-10">
             Producción y calidad
           </Heading>
         );
@@ -137,7 +163,7 @@ const ProduccionSection: React.FC<ProduccionSectionProps> = ({
         variants={containerVariants}
         initial="hidden"
         animate={useInView(sectionRef, { amount: 0.4 }) ? "show" : "hidden"}
-        className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full"
+        className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full"
       >
         {produccionCards.map((card, idx) => (
           <ProduccionCard

@@ -73,7 +73,7 @@ function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-[#0f172a] via-[#0e2e2f] to-[#1e293b] overflow-hidden futurist">
+    <div className="relative min-h-screen bg-gradient-to-br from-[#0f172a] via-[#0e2e2f] to-[#1e293b] overflow-hidden">
       {/* Fondo decorativo glass global y overlays futuristas */}
       <div className="pointer-events-none fixed inset-0 z-0">
         {/* Glow radial */}
@@ -92,7 +92,7 @@ function App() {
           setMenuOpen={setMenuOpen}
         />
       ) : (
-        <div className="fixed top-0 right-0 z-50 flex items-center h-20 px-8">
+        <div className="fixed top-0 right-0 z-50 flex items-center h-20 px-4">
           <button
             className="flex flex-col items-center justify-center w-14 h-14 bg-cyan-200/30 rounded-full shadow-lg border border-cyan-400/40 hover:bg-cyan-100/40 transition-all backdrop-blur-xl"
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
@@ -140,7 +140,7 @@ function App() {
           useInView={useInView}
         />
         <ImageWithZoomSection
-          imageUrl="/images/backgrounds/cogollo.jpg"
+          imageUrl="/images/backgrounds/v2/HRY_7777.jpg"
           alt="Placeholder image"
         />
         <ProduccionSection
@@ -150,7 +150,7 @@ function App() {
           useInView={useInView}
         />
         <ImageWithZoomSection
-          imageUrl="/images/backgrounds/estante.jpg"
+          imageUrl="/images/backgrounds/v2/HRY_8178.jpg"
           alt="Placeholder image"
         />
         <CertificacionesSection
@@ -160,7 +160,7 @@ function App() {
           useInView={useInView}
         />
         <ImageWithZoomSection
-          imageUrl="/images/backgrounds/grupo.jpg"
+          imageUrl="/images/backgrounds/v2/HRY_7957.jpg"
           alt="Placeholder image"
         />
         <ProductosSection
@@ -170,7 +170,7 @@ function App() {
           useInView={useInView}
         />
         <ImageWithZoomSection
-          imageUrl="/images/backgrounds/rojo.jpg"
+          imageUrl="/images/backgrounds/v2/HRY_7910.jpg"
           alt="Placeholder image"
         />
         <MercadosSection
@@ -179,7 +179,7 @@ function App() {
           useInView={useInView}
         />
         <ImageWithZoomSection
-          imageUrl="/images/backgrounds/luces.jpg"
+          imageUrl="/images/backgrounds/v2/HRY_7929.jpg"
           alt="Placeholder image"
         />
         <ResponsabilidadSection
