@@ -41,7 +41,7 @@ const ProduccionCard: React.FC<ProduccionCardProps> = ({
         <h3 className="text-xl lg:text-2xl font-semibold mb-2 text-white group-hover:hidden transition-all">
           {title}
         </h3>
-        <p className="text-lg tracking-wide text-white/80 hidden group-hover:block transition-all">
+        <p className="text-lg tracking-wide text-white/80 lg:hidden lg:group-hover:block transition-all">
           {description}
         </p>
       </div>
