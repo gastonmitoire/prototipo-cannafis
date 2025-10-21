@@ -43,11 +43,11 @@ interface ProductosSectionProps {
   useInView: any;
 }
 
-const ProductosCard = ({ children }: { children: React.ReactNode }) => (
-  <div className="h-full w-full text-lg p-10 bg-black/10 backdrop-blur-sm">
-    {children}
-  </div>
-);
+// const ProductosCard = ({ children }: { children: React.ReactNode }) => (
+//   <div className="h-full w-full text-lg p-10 bg-black/10 backdrop-blur-sm">
+//     {children}
+//   </div>
+// );
 
 // Variants para la lista con stagger llamativo pero profesional
 const listStagger = {
@@ -114,9 +114,7 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
   useInView,
 }) => {
   const inView = useInView(sectionRef, { amount: 0.4 });
-  const [backgroundStyle, setBackgroundStyle] = React.useState<
-    "skulls" | "stardust"
-  >("skulls");
+  const [backgroundStyle] = React.useState<"skulls" | "stardust">("skulls");
 
   return (
     <section

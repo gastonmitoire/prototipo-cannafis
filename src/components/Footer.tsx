@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
-import { CertCard, certificaciones } from "./CertificacionesSection";
+import { certificaciones } from "./CertificacionesSection";
 
 const sections = [
   { id: "inicio", label: "Inicio" },
