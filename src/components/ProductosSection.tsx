@@ -11,32 +11,18 @@ const CanalDistribucion: React.FC<{ text: string }> = ({ text }) => {
     <motion.div ref={ref} className="relative text-white/90">
       <motion.h2
         ref={ref}
-        className="uppercase text-3xl text-white/80 font-bold"
-        initial={{
-          translateX: 0,
-          paddingTop: 3,
-          paddingBottom: 3,
-        }}
+        className="uppercase text-xl lg:text-3xl text-white/80 font-bold pt-1.5"
+        transition={{ duration: 1.02, delay: 0.33 }}
+        initial={{ opacity: 0, x: 16 }}
         animate={
           inView
-            ? {
-                translateX: 10,
-                paddingTop: 10,
-                paddingBottom: 10,
-              }
-            : {
-                translateX: 0,
-                paddingTop: 3,
-                paddingBottom: 3,
-              }
+            ? { opacity: 1, x: 0, transition: { duration: 1.02, delay: 0.13 } }
+            : { opacity: 0, x: 16 }
         }
-        transition={{
-          duration: 1.22,
-          delay: 0.13,
-        }}
       >
         {text}
       </motion.h2>
+
       <motion.span
         initial={{ width: 0 }}
         animate={
@@ -44,7 +30,7 @@ const CanalDistribucion: React.FC<{ text: string }> = ({ text }) => {
             ? { width: "100%", transition: { duration: 1.22, delay: 0.13 } }
             : { width: 0 }
         }
-        className="absolute left-0 bottom-0 h-0.5 bg-white/20 rounded-full"
+        className="absolute left-0 top-0 h-0.5 bg-white/20 rounded-full"
         style={{ borderRadius: 2, height: 1.5, background: "#ffffff33" }}
       />
     </motion.div>
@@ -95,7 +81,7 @@ interface ProductosListProps {
 
 const ProductosList = ({ items, inView }: ProductosListProps) => (
   <motion.div
-    className="py-7 space-y-1.5 grid grid-cols-4 gap-5"
+    className="py-7 space-y-1.5 grid grid-cols-2 lg:grid-cols-4 gap-5"
     variants={listStagger}
     initial="hidden"
     animate={inView ? "show" : "hidden"}
@@ -136,7 +122,7 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
     <section
       id="productos"
       ref={sectionRef}
-      className="relative h-screen px-4 -z-10"
+      className="relative min-h-screen px-4 -z-10"
       style={{
         backgroundImage:
           'url("https://www.transparenttextures.com/patterns/' +
@@ -147,7 +133,7 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-t from-background backdrop-blur-xs -z-10" />
-      <button
+      {/* <button
         onClick={() =>
           setBackgroundStyle((prev) =>
             prev === "skulls" ? "stardust" : "skulls"
@@ -156,8 +142,8 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
         className="absolute top-4 right-4 bg-white/20 p-2 rounded z-30"
       >
         Cambiar fondo
-      </button>
-      <div className="@container grid grid-cols-5 gap-5 pt-10 2xl:pt-20">
+      </button> */}
+      <div className="@container grid lg:grid-cols-5 gap-5 pt-10 2xl:pt-20">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -169,15 +155,19 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
           </Heading>
           <div className="w-full">
             <div className="mx-auto text-white/80 space-y-2 gap-4">
-              <ProductosCard>
-                <Heading expand>Frascos y bolsas</Heading>
+              <div>
+                <Heading expand className="text-right">
+                  Frascos y bolsas
+                </Heading>
                 <ProductosList
                   items={["20g", "40g", "100g", "500g"]}
                   inView={inView}
                 />
-              </ProductosCard>
-              <ProductosCard>
-                <Heading expand>Cápsulas y comprimidos</Heading>
+              </div>
+              <div className="flex flex-col">
+                <Heading expand className="text-right">
+                  Cápsulas y comprimidos
+                </Heading>
                 <motion.p
                   initial={{ opacity: 0, x: 16 }}
                   animate={
@@ -194,19 +184,21 @@ const ProductosSection: React.FC<ProductosSectionProps> = ({
                         }
                       : { opacity: 0, x: 16 }
                   }
-                  className="text-sm 2xl:text-xl font-thin italic mt-7"
+                  className="text-sm 2xl:text-xl self-end max-w-[85%] lg:max-w-[60%] font-thin italic"
                 >
                   Presentaciones adaptables a requerimientos de cada laboratorio
                   o institución
                 </motion.p>
-              </ProductosCard>
+              </div>
             </div>
           </div>
         </motion.div>
         <div className="col-span-2">
-          <Heading>Canales de distribución</Heading>
+          <Heading className="text-right lg:text-left text-white/80">
+            Canales de distribución
+          </Heading>
 
-          <div className="max-w-2xl w-full mx-auto flex flex-col justify-center gap-10">
+          <div className="max-w-2xl w-full mx-auto flex flex-col justify-center gap-3 lg:gap-10">
             {[
               "farmacias magistrales",
               "laboratorios",
